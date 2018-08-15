@@ -123,7 +123,10 @@ alias df='df -h'
 alias du='du -h'
 alias psgrep='ps aux | grep $(echo $1 | sed "s/^\(.\)/[\1]/g")'
 alias dirtree='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
-alias mocp='/usr/bin/mocp-scrobbler.py -d; mocp'
+alias mocp='/usr/local/bin/mocpscrob -d; mocp'
+alias mc='mc -S gotar'
+alias sql='mysql -uroot -proot -h'
+alias tox='ssh -D 8888 root@image-hosting'
 
 alias -s {txt,log,list}=emacs
 alias -s {pdf,djvu}="nohup zathura"
