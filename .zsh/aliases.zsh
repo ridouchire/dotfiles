@@ -1,10 +1,8 @@
 if [ -f /usr/bin/grc ]; then
     alias gcc="grc --colour=auto gcc"
-    alias irclog="grc --colour=auto irclog"
     alias log="grc --colour=auto log"
     alias netstat="grc --colour=auto netstat"
     alias ping="grc --colour=auto ping"
-    alias proftpd="grc --colour=auto proftpd"
     alias traceroute="grc --colour=auto traceroute"
 fi
 
@@ -42,6 +40,13 @@ fi
 
 if [ -f /usr/bin/gpicview ]; then
     alias -s {jpg,jpeg,png,gif,tif,tiff,bmp}="nohup gpicview"
+fi
+
+if [ -f /usr/bin/git ]; then
+    alias gbranch="git checkout -B"
+    alias commit="git commit -S"
+    alias gpick="git cherry-pick"
+    alias gstat="git status"
 fi
 
 alias mv='nocorrect mv -i'
