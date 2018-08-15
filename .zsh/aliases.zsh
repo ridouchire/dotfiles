@@ -47,6 +47,7 @@ if [ -f /usr/bin/git ]; then
     alias commit="git commit -S"
     alias gpick="git cherry-pick"
     alias gstat="git status"
+    alias gpush="git push -u origin"
 fi
 
 alias mv='nocorrect mv -i'
