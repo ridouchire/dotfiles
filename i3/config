@@ -15,11 +15,9 @@ set $w10 10: admin
 
 ## Assign section
 assign [class="^Firefox$"]      → $w2
-assign [title="^Print$"]        → $w1
 assign [class="^Emacs$"]        → $w3
 assign [class="^mpv$"]          → $w8
-assign [class="^urxvt$"]        → $w1
-assign [title="^Telegram$"]     → $w4
+assign [title="^Gajim$"]        → $w4
 assign [title="^pugdebug$"]     → $w5
 
 for_window [class="terminal"] border 1pixel
@@ -27,14 +25,7 @@ for_window [class="terminal"] border 1pixel
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below. ISO 10646 = Unicode
-#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, if you need a lot of unicode glyphs or
-# right-to-left text rendering, you should instead use pango for rendering and
-# chose a FreeType font, such as:
-font pango:Terminus 8
+font pango:Terminus 10
 
 # next/previous workspace
 bindsym $mod+Tab workspace back_and_forth
@@ -101,9 +92,6 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
-
 # switch to workspace
 bindsym $mod+1 workspace $w1
 bindsym $mod+2 workspace $w2
@@ -133,15 +121,11 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-# Create Log out, Reboot, Poweroff bindings
-
 set $mode_system System (e) logout, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym e exec --no-startup-id killall -9 slim, mode "default"
-    bindsym r exec --no-startup-id reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id poweroff, mode "default"
+    bindsym e exec --no-startup-id sudo killall -9 slim, mode "default"
+    bindsym r exec --no-startup-id sudo reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id sudo poweroff, mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -179,29 +163,20 @@ bar {
         tray_output primary
         position bottom
 	status_command i3status -c ~/.config/i3/i3status.conf
-#        status_command ~/.i3/conky/conky-i3bar
-
         colors {
             # background #24364F
-	    background #222222
+	    background #111111
             statusline #CCCCCC
 
-            focused_workspace  #ffffff #444444
+            focused_workspace  #000000 #888888
             active_workspace   #cccccc #222222
             inactive_workspace #555555 #222222
             urgent_workspace   #ffffff #900000
         }
 }
 
-# Original windows decoration colors
-# class                 border  backgr. text    indicator
-#client.focused          #4c7899 #285577 #ffffff #2e9ef4
-#client.focused          #4c7899 #285577 #ffffff #2e9ef4
-#client.focused_inactive #333333 #5f676a #ffffff #484e50
-#client.unfocused        #333333 #222222 #888888 #292d2e
-#client.urgent           #2f343a #900000 #ffffff #900000
 client.unfocused         #222222 #111111 #aaaaaa #2e9ef4
-client.focused           #555555 #222222 #aaaaaa #2e9ef4
+client.focused           #222222 #888888 #000000 #2e9ef4
 ## Autostart section
 exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:scroll"
 exec --no-startup-id /usr/local/bin/battery_checker.sh
