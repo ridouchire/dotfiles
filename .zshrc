@@ -53,3 +53,17 @@ setopt nohup
 setopt ZLE
 setopt MULTIBYTE
 setopt NUMERIC_GLOB_SORT
+setopt APPEND_HISTORY
+setopt HIST_REDUCE_BLANKS
+
+
+bindkey "^[[2~" yank
+bindkey "^[[3~" delete-char
+bindkey "^[[5~" up-line-or-history
+bindkey "^[[6~" down-line-or-history
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
+bindkey "^[[e" expand-cmd-path
+bindkey "^[[A" up-line-or-search
+bindkey "^[[B" down-line-or-search
+bindkey " " magic-space
