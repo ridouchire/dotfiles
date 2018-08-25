@@ -4,6 +4,7 @@ if [ -f /usr/bin/grc ]; then
     alias netstat="grc --colour=auto netstat"
     alias ping="grc --colour=auto ping"
     alias traceroute="grc --colour=auto traceroute"
+    alias df="grc --colour=auto df -h"
 fi
 
 if [ -f /usr/bin/iconv ]; then
@@ -50,13 +51,16 @@ if [ -f /usr/bin/git ]; then
     alias gpush="git push -u origin"
 fi
 
+if [ -f /usr/bin/php ]; then
+    alias phpchecksyntax='find . -type f -name "*.php" -exec php -d error_reporting=32767 -l {} \; 2>&1 >&- | grep "^"'
+fi
+
 alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -iR'
 alias rm='nocorrect rm -i'
 alias rmf='nocorrect rm -f'
 alias rmrf='nocorrect rm -fR'
 alias mkdir='nocorrect mkdir'
-alias df='df -h'
 alias du='du -h'
 alias ls='ls --color=auto'   
 alias lsd='ls -ld .*'    
@@ -70,3 +74,4 @@ alias dirtree='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-
 
 # ssh aliases
 alias tox='ssh -D 8888 root@image-hosting'
+alias mikrotik='ssh pico@mikrotik.loc'
