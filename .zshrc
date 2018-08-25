@@ -1,7 +1,6 @@
 autoload -U compinit promptinit
 compinit
 promptinit
-prompt clint
 
 DIRSTACKSIZE=20
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
@@ -32,17 +31,10 @@ else
 fi
 
 setopt completealiases
-setopt HIST_IGNORE_DUPS
-setopt autopushd pushdsilent pushdtohome
-setopt pushdignoredups
-setopt pushdminus
-setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY 
-setopt histexpiredupsfirst histfindnodups
 setopt CORRECT_ALL
-setopt AUTO_CD
 setopt SH_WORD_SPLIT
 setopt IGNORE_EOF
 setopt NO_BEEP
@@ -67,3 +59,6 @@ bindkey "^[[e" expand-cmd-path
 bindkey "^[[A" up-line-or-search
 bindkey "^[[B" down-line-or-search
 bindkey " " magic-space
+
+source ~/.zsh/zsh-git/zshrc.sh 
+PROMPT='%B%~%b$(git_super_status) '
