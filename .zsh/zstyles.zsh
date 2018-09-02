@@ -13,7 +13,6 @@ zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:options' auto-description '%d'
 zstyle ':completion:*:descriptions' format '> %B%d%b'
 zstyle ':completion:*:messages' format '> %d'
-zstyle ':completion:*:warnings' format '> Ошибка: нет совпадений для: %d'
 zstyle ':completion:*:corrections' format '> %B%d (число ошибок: %e)%b'
 zstyle ':completion:*:correct:*' insert-unambiguous true
 zstyle ':completion:*:correct:*' original true
@@ -31,7 +30,6 @@ zstyle ':completion:*:incremental:*' completer _complete _correct
 zstyle ':completion:*:predict:*' completer _complete
 zstyle ':mime:*' x-browsers firefox rekonq google-chrome konqueror chromium-browser
 zstyle ':mime:*' tty-browsers w3m elinks links lynx
-zstyle -e ':completion:*' hosts 'reply=($myhosts)'
 zstyle ':completion:*' insert-tab true
 zstyle ':completion:*' select-prompt '%SСтрока: %LЭлемент: %M[%p]%s'
 zstyle ':completion:*' list-prompt '%SТекущее положение: %p%s'
@@ -41,7 +39,7 @@ zstyle ':completion:*' keep-prefix changed
 zstyle ':completion:*:man:*' separate-sections true
 zstyle ':completion:*:history-words' stop yes
 zstyle ':completion:*:history-words' remove-all-dups yes
-zstyle ':completion:*:history-words' list false
+zstyle ':completion:*:history-words' list true
 zstyle ':completion:*:history-words' menu yes select
 zstyle ':completion:*' old-menu true
 zstyle ':completion:*' original true
@@ -50,8 +48,6 @@ zstyle ':completion:*' use-compctl true
 zstyle ':completion:*' word true
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' squeeze-slashes true
-zstyle ':completion:*:(ssh|scp|ftp):*' hosts $hosts
-zstyle ':completion:*:(ssh|scp|ftp):*' users $users
 zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~'
 zstyle ':completion:*:*:*:users' ignored-patterns adm apache bin daemon games gdm halt ident junkbust lp mail mailnull named news nfsnobody nobody nscd ntp operator pcap postgres radvd rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs
 zstyle ':completion:*' rehash true
