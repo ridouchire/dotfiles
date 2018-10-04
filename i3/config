@@ -48,6 +48,9 @@ bindsym XF86AudioStop exec "mocp -P"
 bindsym XF86AudioNext exec "mocp -f"
 bindsym XF86AudioPrev exec "mocp -r"
 
+bindsym $mod+Shift+s  exec "sudo /usr/local/bin/powersave.sh"
+bindsym $mod+Shift+p  exec "sudo /usr/local/bin/perfomance.sh"
+
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="/usr/bin/dmenu -fn 'xft:Terminus:pixelsize=10' -nb '#191919' -nf '#9ac0cd' -sb '#191919' -sf '#bf3f34' -p 'search app >> '"
 
 # change focus
