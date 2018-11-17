@@ -25,7 +25,7 @@ for_window [class="terminal"] border 1pixel
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-font pango:Terminus 10
+font pango:Hermit 7
 
 # next/previous workspace
 bindsym $mod+Tab workspace back_and_forth
@@ -39,7 +39,7 @@ floating_modifier $mod
 
 # kill focused window
 bindsym $mod+q kill
-bindsym $mod+Ctrl+l exec i3lock -n
+bindsym $mod+Ctrl+l exec i3lock -c 000000
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
 bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
 
@@ -51,7 +51,7 @@ bindsym XF86AudioPrev exec "mocp -r"
 bindsym $mod+Shift+s  exec "sudo /usr/local/bin/powersave.sh"
 bindsym $mod+Shift+p  exec "sudo /usr/local/bin/perfomance.sh"
 
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="/usr/bin/dmenu -fn 'xft:Terminus:pixelsize=10' -nb '#191919' -nf '#9ac0cd' -sb '#191919' -sf '#bf3f34' -p 'search app >> '"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="/usr/bin/dmenu -fn 'xft:Hermit:pixelsize=10' -nb '#191919' -nf '#9ac0cd' -sb '#191919' -sf '#bf3f34' -p 'search app >> '"
 
 # change focus
 bindsym $mod+j focus left
@@ -182,4 +182,9 @@ client.unfocused         #222222 #111111 #aaaaaa #2e9ef4
 client.focused           #222222 #888888 #000000 #2e9ef4
 ## Autostart section
 exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:scroll"
-exec --no-startup-id /usr/local/bin/battery_checker.sh
+#exec --no-startup-id /usr/local/bin/battery_checker.sh
+exec --no-startup-id sudo iptables -A INPUT -m tcp -p tcp --dport 22 -j REJECT
+exec --no-startup-id sudo iptables -A INPUT -m tcp -p tcp --dport 80 -j REJECT
+exec --no-startup-id sudo iptables -A INPUT -m tcp -p tcp --dport 3389 -j REJECT
+exec --no-startup-id sudo iptables -A INPUT -m tcp -p tcp --dport 8888 -j REJECT
+exec --no-startup-id sudo iptables -A INPUT -m tcp -p tcp --dport 9999 -j REJECT
