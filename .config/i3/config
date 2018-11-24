@@ -23,9 +23,9 @@ assign [title="^pugdebug$"]     → $w5
 for_window [class="terminal"] border 1pixel
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
-font pango:Hermit 7
+font pango:Terminus 12
 
 # next/previous workspace
 bindsym $mod+Tab workspace back_and_forth
@@ -39,17 +39,22 @@ floating_modifier $mod
 
 # kill focused window
 bindsym $mod+q kill
-bindsym $mod+Ctrl+l exec i3lock -c 000000
-bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
-bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
+bindsym $mod+Ctrl+l exec i3lock -i ~/.local/data/locked.png
 
-bindsym XF86AudioPlay exec "mocp -U"
-bindsym XF86AudioStop exec "mocp -P"
-bindsym XF86AudioNext exec "mocp -f"
-bindsym XF86AudioPrev exec "mocp -r"
+bindsym XF86ScreenSaver       exec "i3lock -i ~/.local/data/locked.png"
+bindsym XF86AudioRaiseVolume  exec "amixer -D pulse sset Master '5%+'"
+bindsym XF86AudioLowerVolume  exec "amixer -D pulse sset Master '5%-'"
+bindsym XF86AudioMute         exec "amixer -D pulse sset Master toggle"
+bindsym XF86AudioMicMute      exec "amixer -D pulse sset Capture toggle"
+bindsym XF86MonBrightnessUp   exec "~/.local/bin/backlight.sh +"
+bindsym XF86MonBrightnessDown exec "~/.local/bin/backlight.sh -"
+bindsym XF86AudioPlay         exec "mocp -U"
+bindsym XF86AudioStop         exec "mocp -P"
+bindsym XF86AudioNext         exec "mocp -f"
+bindsym XF86AudioPrev         exec "mocp -r"
 
-bindsym $mod+Shift+s  exec "sudo /usr/local/bin/powersave.sh"
-bindsym $mod+Shift+p  exec "sudo /usr/local/bin/perfomance.sh"
+# bindsym $mod+Shift+s  exec "sudo /usr/local/bin/powersave.sh"
+# bindsym $mod+Shift+p  exec "sudo /usr/local/bin/perfomance.sh"
 
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="/usr/bin/dmenu -fn 'xft:Hermit:pixelsize=10' -nb '#191919' -nf '#9ac0cd' -sb '#191919' -sf '#bf3f34' -p 'search app >> '"
 
@@ -126,7 +131,7 @@ bindsym $mod+Shift+r restart
 
 set $mode_system System (e) logout, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym e exec --no-startup-id sudo killall -9 slim, mode "default"
+    bindsym e exec --no-startup-id sudo killall Xorg, mode "default"
     bindsym r exec --no-startup-id sudo reboot, mode "default"
     bindsym Shift+s exec --no-startup-id sudo poweroff, mode "default"
     # back to normal: Enter or Escape

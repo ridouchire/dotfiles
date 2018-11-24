@@ -1,0 +1,25 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("elfinger set path"
+ (filename . "/work/dev-cart/web/public/design/backend/templates/views/file_editor/manage.tpl")
+ (front-context-string . "fn_url('elf_conn")
+ (rear-context-string . "          url : ")
+ (position . 615))
+("delete variations"
+ (filename . "/work/dev-cart/web/public/app/addons/product_variations/func.php")
+ (front-context-string . "function fn_prod")
+ (rear-context-string . "uct option.\n */\n")
+ (position . 14861))
+("destroyMaps"
+ (filename . "/work/dev-cart/web/public/js/addons/rus_pickup/yandex.js")
+ (front-context-string . "estroyMaps');\n\n ")
+ (rear-context-string . "   $.cePickup('d")
+ (position . 8319))
+("delete abandoned cart after payment processed"
+ (filename . "/work/dev-cart/web/public/app/addons/paypal/func.php")
+ (front-context-string . "ducts WHERE orde")
+ (rear-context-string . "user_session_pro")
+ (position . 22746))
+)
