@@ -21,14 +21,8 @@
 (global-set-key (kbd "C->") 'goto-char)
 
 ;; hotkeys for my work 
-(global-set-key (kbd "C-c d d") (lambda () (interactive) (dired "/work/dev-cart/web/public")))
-(global-set-key (kbd "C-c d o") (lambda () (interactive) (dired "/work/old_cart/web/public")))
-(global-set-key (kbd "C-c d c") (lambda () (interactive) (dired "/work/cart-com/web/public")))
-(global-set-key (kbd "C-c d r") (lambda () (interactive) (dired "/work/cart-ru/web/public")))
-(global-set-key (kbd "C-c d h") (lambda () (interactive) (dired "/work/helpdesk/web/public")))
-(global-set-key (kbd "C-c d i") (lambda () (interactive) (dired "/work/image-hosting/web")))
-(global-set-key (kbd "C-c d b") (lambda () (interactive) (dired "/work/blog/web/")))
-(global-set-key (kbd "C-c d p") (lambda () (interactive) (dired "/work/phpichan/web/public")))
+(global-set-key (kbd "C-c d d") (lambda () (interactive) (dired "~/Sources/dev-cart/public")))
+(global-set-key (kbd "C-c d d") (lambda () (interactive) (dired "~/Sources/image-hosting")))
 
 (global-set-key (kbd "C-c f") 'projectile-grep)
 (global-set-key (kbd "C-c k") 'projectile-kill-buffers)
