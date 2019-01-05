@@ -58,5 +58,5 @@ bindkey "^[[A" up-line-or-search
 bindkey "^[[B" down-line-or-search
 bindkey " " magic-space
 
-source ~/.zsh/zsh-git/zshrc.sh 
+source ~/.zsh/libs/zsh-git/zshrc.sh
 PROMPT='%B%~%b$(git_super_status) '
