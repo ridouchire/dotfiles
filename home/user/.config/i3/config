@@ -109,10 +109,10 @@ bindsym $mod+Shift+0 move container to workspace $w10
 
 bindsym $mod+Ctrl+l exec i3lock -i ~/.local/data/locked.png
 bindsym XF86ScreenSaver       exec "i3lock -i ~/.local/data/locked.png"
-bindsym XF86AudioRaiseVolume  exec "amixer -D sset Master '5%+'"
-bindsym XF86AudioLowerVolume  exec "amixer -D sset Master '5%-'"
-bindsym XF86AudioMute         exec "amixer -D sset Master toggle"
-bindsym XF86AudioMicMute      exec "amixer -D sset Capture toggle"
+bindsym XF86AudioRaiseVolume  exec "amixer sset Master '5%+'"
+bindsym XF86AudioLowerVolume  exec "amixer sset Master '5%-'"
+bindsym XF86AudioMute         exec "amixer sset Master toggle"
+bindsym XF86AudioMicMute      exec "amixer sset Capture toggle"
 bindsym XF86MonBrightnessUp   exec "~/.local/bin/backlight.sh +"
 bindsym XF86MonBrightnessDown exec "~/.local/bin/backlight.sh -"
 bindsym XF86AudioPlay         exec "mocp -U"
