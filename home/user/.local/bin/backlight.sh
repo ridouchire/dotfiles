@@ -17,4 +17,4 @@ else
     fi
 fi
 
-echo -n "$CURRENT" | sudo tee /sys/class/backlight/intel_backlight/brightness
+echo -n "$CURRENT" | tee /sys/class/backlight/intel_backlight/brightness
