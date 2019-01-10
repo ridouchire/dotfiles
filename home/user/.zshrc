@@ -1,3 +1,4 @@
+export PATH=$PATH:$HOME/.composer/vendor/bin
 autoload -U compinit promptinit
 compinit
 promptinit
