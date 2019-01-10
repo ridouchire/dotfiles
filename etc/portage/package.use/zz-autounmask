@@ -1,0 +1,31 @@
+>=x11-libs/libxcb-1.13.1 xkb
+>=x11-libs/libxkbcommon-0.8.2 X
+>=x11-libs/cairo-1.14.12 X xcb
+>=x11-libs/pango-1.42.4 X
+x11-terms/rxvt-unicode -alt-font-width 256-color blink unicode3 fading-colors xft
+www-client/firefox-bin pulseaudio
+media-libs/mesa lm_sensors
+x11-base/xorg-drivers synaptics
+>=net-wireless/wpa_supplicant-2.6-r10 dbus
+>=dev-libs/glib-2.56.4 dbus
+>=app-crypt/gcr-3.28.0 gtk
+>=sys-auth/consolekit-1.2.1 policykit
+>=dev-lang/python-2.7.15:2.7 sqlite
+>=app-crypt/pinentry-1.1.0-r2 gnome-keyring
+app-editors/emacs X -Xaw3d png m17n-lib gtk2 tiff toolkit-scroll-bar jpeg imagemagick dbus git limxml2 libxml2 -toolkit-scroll-bars gtk
+>=app-emacs/emacs-common-gentoo-1.6-r1 X
+>=app-text/ghostscript-gpl-9.26 cups
+media-fonts/terminus-font ru-i X a-like-o quote ru-k distinct-l ru-dv
+www-client/firefox system-harfbuzz system-libvpx system-sqlite system-jpeg -wifi hwaccel system-icu system-libevent
+>=media-libs/libpng-1.6.35-r1 apng
+>=dev-db/sqlite-3.25.3 secure-delete
+>=media-libs/libvpx-1.5.0 postproc
+>=dev-lang/python-3.6.5 sqlite
+media-video/mpv lcms drm jpeg zsh-completion libcaca dvd
+dev-lang/php intl sockets xmlwriter threads mysql sodium tidy xslt xmlrpc calendar xmlreader pcntl inifile curl zip pdo ftp zip-encryption cgi mhash gmp mysqli soap -webp -exif phpdbg sqlite
+dev-db/mysql -latin1 perl server
+media-video/ffmpeg gnutls opus vdpau vpx webp wavpack x264 mp3 openh264 x265 vorbis vaapi opengl xvid
+media-gfx/geeqie tiff jpeg xmp
+>=media-gfx/exiv2-0.26_p20180811-r3 xmp
+media-libs/imlib2 mp3 jpeg tiff png gif
+media-sound/moc flac curl mad sndfile vorbis tremor libsamplerate aac timidity musepack wavpack speex sid ffmpeg
