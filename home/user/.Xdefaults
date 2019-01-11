@@ -21,14 +21,14 @@ URxvt.cursorBlink:      true
 URxvt.cursorColor:     brown
 URxvt.cursorColor2:     black
 
-URxvt*font:             xft:Inconsolata:size=10
+URxvt.font: xft:xos4 Terminus:size=14:hinting=True
 
 ! Цвета в man-страницах
 URxvt.colorMode:         on
 URxvt.boldColors:        on
 URxvt.dynamicColors:     on
 URxvt.colorULMode:       on
-URxvt.underLine:         off
+URxvt.underLine:         on
 URxvt.colorBDMode:       on
 URxvt.colorBD:           cyan
 
@@ -38,10 +38,14 @@ URxvt*scrollstyle:      rxvt
 
 URxvt.pastableTabs:     true
 
+URxvt.secondaryScroll: 0
+URxvt.secondaryScreen: 1
 
 !=== НАСТРОЙКИ ОБРАБОТКИ ССЫЛОК ===
-URxvt.urlLauncher:      firefox-bin
-URxvt.matcher.button:   1
+URxvt.url-launcher:        firefox
+URxvt.url-select.launcher: firefox
+URxvt.matcher.button:      1
+URxvt.url-select.underline: true
 ! Горячие клавиши для выделения ссылок (Alt+U),
 ! после выделения ссылка открывается по Enter
 URxvt.keysym.M-u:       perl:url-select:select_next
@@ -63,5 +67,5 @@ URxvt.meta:             ignore
 URxvt.utmpInhibit:      true
 
 !=== НАСТРОЙКИ РАСШИРЕНИЙ ===
-URxvt.perl-lib:         $HOME/.config/urxvt/perl/
-URxvt.perl-ext-common:  default,tabbedex,matcher,url-select,clipboard-osc
+URxvt.perl-lib:         /usr/lib/urxvt/perl/
+URxvt.perl-ext-common:  default,matcher,url-select,clipboard-osc
