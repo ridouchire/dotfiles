@@ -36,9 +36,9 @@ mode "resize" {
 
 set $mode_system System (e) logout, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym e exec --no-startup-id sudo killall Xorg, mode "default"
-    bindsym r exec --no-startup-id sudo reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id sudo poweroff, mode "default"
+    bindsym e exec --no-startup-id killall X, mode "default"
+    bindsym r exec --no-startup-id reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id poweroff, mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
