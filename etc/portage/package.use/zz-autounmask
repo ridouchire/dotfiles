@@ -2,7 +2,7 @@
 >=x11-libs/libxkbcommon-0.8.2 X
 >=x11-libs/cairo-1.14.12 X xcb
 >=x11-libs/pango-1.42.4 X
-x11-terms/rxvt-unicode -alt-font-width 256-color blink unicode3 fading-colors xft
+x11-terms/rxvt-unicode -alt-font-width 256-color blink unicode3 fading-colors xft buffer-on-clear iso14755 pixbuf secondary-wheel wcwidth -vanilla -font-styles
 www-client/firefox-bin pulseaudio
 media-libs/mesa lm_sensors
 x11-base/xorg-drivers synaptics
@@ -12,10 +12,10 @@ x11-base/xorg-drivers synaptics
 >=sys-auth/consolekit-1.2.1 policykit
 >=dev-lang/python-2.7.15:2.7 sqlite
 >=app-crypt/pinentry-1.1.0-r2 gnome-keyring
-app-editors/emacs X -Xaw3d png m17n-lib gtk2 tiff toolkit-scroll-bar jpeg imagemagick dbus git limxml2 libxml2 -toolkit-scroll-bars gtk
+app-editors/emacs X -Xaw3d png m17n-lib gtk2 tiff toolkit-scroll-bar jpeg imagemagick dbus git limxml2 libxml2 -toolkit-scroll-bars gtk xft
 >=app-emacs/emacs-common-gentoo-1.6-r1 X
 >=app-text/ghostscript-gpl-9.26 cups
-media-fonts/terminus-font ru-i X a-like-o quote ru-k distinct-l ru-dv
+media-fonts/terminus-font ru-i X -a-like-o quote -ru-k distinct-l ru-dv -pcf-unicode-only
 www-client/firefox system-harfbuzz system-libvpx system-sqlite system-jpeg -wifi hwaccel system-icu system-libevent
 >=media-libs/libpng-1.6.35-r1 apng
 >=dev-db/sqlite-3.25.3 secure-delete
@@ -29,3 +29,16 @@ media-gfx/geeqie tiff jpeg xmp
 >=media-gfx/exiv2-0.26_p20180811-r3 xmp
 media-libs/imlib2 mp3 jpeg tiff png gif
 media-sound/moc flac curl mad sndfile vorbis tremor libsamplerate aac timidity musepack wavpack speex sid ffmpeg
+mail-client/thunderbird-bin -crashreporter -pulseaudio
+net-wireless/wpa_supplicant ap p2p eap-sim fasteap wps suiteb tdls encommon-eap-types uncommon-eap-types
+>=media-libs/harfbuzz-2.0.2 icu
+>=dev-libs/xmlsec-1.2.26 nss
+>=app-text/xmlto-0.0.28-r1 text
+>=app-text/poppler-0.68.0 cairo
+app-portage/layman sync-plugin-portage
+>=net-libs/libtorrent-rasterbar-1.1.10 python
+>=dev-libs/boost-1.65.0 python
+>=media-libs/libsdl2-2.0.9 opengl X
+>=media-libs/sdl2-image-2.0.4 png
+>=virtual/ffmpeg-9-r2 x264
+dev-libs/m17n-lib xft
