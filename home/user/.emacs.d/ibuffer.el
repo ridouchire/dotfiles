@@ -3,12 +3,8 @@
                ("dired"       (mode . dired-mode))
 	       ("PHP"         (mode . php-mode))
                ("JavaScript"  (mode . javascript-mode))
-               ("PO-files"    (mode . po-mode))
 	       ("HTML"        (mode . web-mode))
 	       ("XML"         (mode . nxml-mode))
-	       ("SQL"         (mode . sql-mode))
-	       ("Common Lisp" (mode . lisp-mode))
-               ("Python"      (mode . python-mode))
 	       ("Emacs"       (or
 			       (name . "^\\*scratch\\*$")
 			       (name . "^\\.emacs")

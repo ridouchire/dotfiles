@@ -16,10 +16,6 @@
 
 ;; hotkeys for my work
 (global-set-key (kbd "C-x C-d") (lambda () (interactive) (dired "~/Sources")))
-(global-set-key (kbd "C-c d d") (lambda () (interactive) (dired "~/Sources/dev-cart/public")))
-(global-set-key (kbd "C-c d h") (lambda () (interactive) (dired "~/Sources/dev-helpdesk/public")))
-(global-set-key (kbd "C-c d s") (lambda () (interactive) (dired "~/Sources/dev-sandbox/public")))
-
 (global-set-key (kbd "C-c f") 'projectile-grep)
 (global-set-key (kbd "C-c k") 'projectile-kill-buffers)
 
