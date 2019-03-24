@@ -47,5 +47,11 @@ dev-libs/m17n-lib xft
 www-client/palemoon threads -official-branding -devtools
 >=x11-libs/libfm-1.2.5 gtk
 media-gfx/gimp jpeg tiff svg xpm mng exif png jpeg2k wmf
-dev-lang/ruby socks5 xemacs tk
+dev-lang/ruby socks5 -xemacs tk
 app-emulation/docker device-mapper
+>=dev-libs/libxml2-2.9.9 python
+>=dev-libs/libpcre2-10.30 pcre16
+>=kde-frameworks/kwindowsystem-5.54.0 X
+>=dev-qt/qtcore-5.11.3-r2 icu
+sys-libs/glibc -multiarhc -multiarch
+app-admin/pass zsh-completion dmenu
