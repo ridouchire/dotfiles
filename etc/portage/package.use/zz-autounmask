@@ -12,7 +12,7 @@ x11-base/xorg-drivers synaptics
 >=sys-auth/consolekit-1.2.1 policykit
 >=dev-lang/python-2.7.15:2.7 sqlite
 >=app-crypt/pinentry-1.1.0-r2 gnome-keyring
-app-editors/emacs X -Xaw3d png m17n-lib gtk2 tiff toolkit-scroll-bar jpeg imagemagick dbus git limxml2 libxml2 -toolkit-scroll-bars gtk xft
+app-editors/emacs X -Xaw3d -png m17n-lib gtk2 -tiff toolkit-scroll-bar -jpeg -imagemagick -dbus git limxml2 libxml2 -toolkit-scroll-bars gtk xft -xpm -inotify -alsa -acl
 >=app-emacs/emacs-common-gentoo-1.6-r1 X
 >=app-text/ghostscript-gpl-9.26 cups
 media-fonts/terminus-font ru-i X -a-like-o quote -ru-k distinct-l ru-dv -pcf-unicode-only
@@ -55,3 +55,8 @@ app-emulation/docker device-mapper
 >=dev-qt/qtcore-5.11.3-r2 icu
 sys-libs/glibc -multiarhc -multiarch
 app-admin/pass zsh-completion dmenu
+media-sound/audacity ffmpeg alsa id3tag
+media-libs/libsdl X opengl
+media-libs/sdl-image gif tiff jpeg png webp
+dev-php/xdebug php_targets_php7-2 -php_targets_php7-1
+>=media-libs/sdl-mixer-1.2.12-r4 vorbis

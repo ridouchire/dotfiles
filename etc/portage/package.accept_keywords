@@ -1,3 +1,4 @@
+=net-im/discord-bin-0.0.5 ~amd64
 =dev-php/semver-1.4.2 ~amd64
 =dev-php/ca-bundle-1.1.3 ~amd64
 =dev-php/xdebug-handler-1.3.1 ~amd64
@@ -27,5 +28,12 @@
 =net-libs/tox-0.2.8 ~amd64
 =dev-python/logbook-1.4.0 ~amd64
 =dev-python/atomicwrites-1.2.1 ~amd64
+=net-im/discord-bin-0.0.8 ~amd64
+=www-client/palemoon-bin-28.3.1 ~amd64
 =dev-java/openjdk-bin-11.0.2_p7 ~amd64
+=www-client/palemoon-28.3.1 ~amd64
+=www-client/palemoon-28.4.0 ~amd64
+=games-action/minetest-0.4.17.1 ~amd64
 =net-im/discord-bin-0.0.9 ~amd64
+=net-im/telegram-desktop-bin-1.6.3 ~amd64
+=games-simulation/lincity-ng-2.9_beta ~amd64
