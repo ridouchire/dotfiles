@@ -16,7 +16,7 @@ app-editors/emacs X -Xaw3d -png m17n-lib gtk2 -tiff toolkit-scroll-bar -jpeg -im
 >=app-emacs/emacs-common-gentoo-1.6-r1 X
 >=app-text/ghostscript-gpl-9.26 cups
 media-fonts/terminus-font ru-i X -a-like-o quote -ru-k distinct-l ru-dv -pcf-unicode-only
-www-client/firefox system-harfbuzz system-libvpx system-sqlite system-jpeg -wifi hwaccel system-icu system-libevent
+www-client/firefox system-harfbuzz system-libvpx system-sqlite system-jpeg -wifi hwaccel system-icu system-libevent geckodriver l10n_ru bindist eme-free
 >=media-libs/libpng-1.6.35-r1 apng
 >=dev-db/sqlite-3.25.3 secure-delete
 >=media-libs/libvpx-1.5.0 postproc
@@ -28,7 +28,7 @@ media-video/ffmpeg gnutls opus vdpau vpx webp wavpack x264 mp3 openh264 x265 vor
 media-gfx/geeqie tiff jpeg xmp
 >=media-gfx/exiv2-0.26_p20180811-r3 xmp
 media-libs/imlib2 mp3 jpeg tiff png gif
-media-sound/moc flac curl mad sndfile vorbis tremor libsamplerate aac timidity musepack wavpack speex sid ffmpeg
+media-sound/moc flac curl mad sndfile vorbis tremor libsamplerate aac -timidity musepack wavpack speex sid ffmpeg
 mail-client/thunderbird-bin -crashreporter -pulseaudio
 net-wireless/wpa_supplicant ap p2p eap-sim fasteap wps suiteb tdls encommon-eap-types uncommon-eap-types
 >=media-libs/harfbuzz-2.0.2 icu
@@ -60,3 +60,11 @@ media-libs/libsdl X opengl
 media-libs/sdl-image gif tiff jpeg png webp
 dev-php/xdebug php_targets_php7-2 -php_targets_php7-1
 >=media-libs/sdl-mixer-1.2.12-r4 vorbis
+media-sound/lmms stk alsa mp3 fliudsnth ogg fliudsynth fluidsynth
+net-im/gajim jingle
+>=dev-libs/gobject-introspection-1.56.1 cairo
+>=media-libs/gegl-0.4.14 cairo
+>=x11-libs/gdk-pixbuf-2.38.1 jpeg
+>=dev-libs/libdbusmenu-16.04.0 gtk
+sys-apps/smartmontools -daemon
+net-misc/dhcpcd -ipv6
