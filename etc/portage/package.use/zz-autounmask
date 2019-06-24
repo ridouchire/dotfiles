@@ -1,70 +1,42 @@
->=x11-libs/libxcb-1.13.1 xkb
->=x11-libs/libxkbcommon-0.8.2 X
->=x11-libs/cairo-1.14.12 X xcb
->=x11-libs/pango-1.42.4 X
+x11-libs/libxcb xkb
 x11-terms/rxvt-unicode -alt-font-width 256-color blink unicode3 fading-colors xft buffer-on-clear iso14755 pixbuf secondary-wheel wcwidth -vanilla -font-styles
-www-client/firefox-bin pulseaudio
 media-libs/mesa lm_sensors
 x11-base/xorg-drivers synaptics
->=net-wireless/wpa_supplicant-2.6-r10 dbus
->=dev-libs/glib-2.56.4 dbus
->=app-crypt/gcr-3.28.0 gtk
->=sys-auth/consolekit-1.2.1 policykit
 >=dev-lang/python-2.7.15:2.7 sqlite
->=app-crypt/pinentry-1.1.0-r2 gnome-keyring
 app-editors/emacs X -Xaw3d -png m17n-lib gtk2 -tiff toolkit-scroll-bar -jpeg -imagemagick -dbus git limxml2 libxml2 -toolkit-scroll-bars gtk xft -xpm -inotify -alsa -acl
->=app-emacs/emacs-common-gentoo-1.6-r1 X
->=app-text/ghostscript-gpl-9.26 cups
 media-fonts/terminus-font ru-i X -a-like-o quote -ru-k distinct-l ru-dv -pcf-unicode-only
 www-client/firefox system-harfbuzz system-libvpx system-sqlite system-jpeg -wifi hwaccel system-icu system-libevent geckodriver l10n_ru bindist eme-free
->=media-libs/libpng-1.6.35-r1 apng
->=dev-db/sqlite-3.25.3 secure-delete
->=media-libs/libvpx-1.5.0 postproc
->=dev-lang/python-3.6.5 sqlite
 media-video/mpv lcms drm jpeg zsh-completion libcaca dvd
 dev-lang/php intl sockets xmlwriter threads mysql sodium tidy xslt xmlrpc calendar xmlreader pcntl inifile curl zip pdo ftp zip-encryption cgi mhash gmp mysqli soap -webp -exif phpdbg sqlite
 dev-db/mysql -latin1 perl server
 media-video/ffmpeg gnutls opus vdpau vpx webp wavpack x264 mp3 openh264 x265 vorbis vaapi opengl xvid
 media-gfx/geeqie tiff jpeg xmp
->=media-gfx/exiv2-0.26_p20180811-r3 xmp
 media-libs/imlib2 mp3 jpeg tiff png gif
 media-sound/moc flac curl mad sndfile vorbis tremor libsamplerate aac -timidity musepack wavpack speex sid ffmpeg
 mail-client/thunderbird-bin -crashreporter -pulseaudio
 net-wireless/wpa_supplicant ap p2p eap-sim fasteap wps suiteb tdls encommon-eap-types uncommon-eap-types
->=media-libs/harfbuzz-2.0.2 icu
->=dev-libs/xmlsec-1.2.26 nss
->=app-text/xmlto-0.0.28-r1 text
->=app-text/poppler-0.68.0 cairo
 app-portage/layman sync-plugin-portage
->=net-libs/libtorrent-rasterbar-1.1.10 python
->=dev-libs/boost-1.65.0 python
 net-p2p/deluge geoip gtk console
 sys-power/pm-utils ntp
->=media-libs/libsdl2-2.0.9 opengl X
->=media-libs/sdl2-image-2.0.4 png
->=virtual/ffmpeg-9-r2 x264
 dev-libs/m17n-lib xft
-www-client/palemoon threads -official-branding -devtools
->=x11-libs/libfm-1.2.5 gtk
 media-gfx/gimp jpeg tiff svg xpm mng exif png jpeg2k wmf
 dev-lang/ruby socks5 -xemacs tk
 app-emulation/docker device-mapper
->=dev-libs/libxml2-2.9.9 python
->=dev-libs/libpcre2-10.30 pcre16
->=kde-frameworks/kwindowsystem-5.54.0 X
->=dev-qt/qtcore-5.11.3-r2 icu
 sys-libs/glibc -multiarhc -multiarch
 app-admin/pass zsh-completion dmenu
 media-sound/audacity ffmpeg alsa id3tag
 media-libs/libsdl X opengl
 media-libs/sdl-image gif tiff jpeg png webp
 dev-php/xdebug php_targets_php7-2 -php_targets_php7-1
->=media-libs/sdl-mixer-1.2.12-r4 vorbis
 media-sound/lmms stk alsa mp3 fliudsnth ogg fliudsynth fluidsynth
 net-im/gajim jingle
->=dev-libs/gobject-introspection-1.56.1 cairo
->=media-libs/gegl-0.4.14 cairo
->=x11-libs/gdk-pixbuf-2.38.1 jpeg
->=dev-libs/libdbusmenu-16.04.0 gtk
+www-client/w3mmee gpm imlib xface
 sys-apps/smartmontools -daemon
 net-misc/dhcpcd -ipv6
+games-roguelike/stone-soup sound
+sys-power/nvclock nvcontrol
+net-im/skypeforlinux consolekit
+sys-auth/polkit consolekit
+app-text/ghostscript-gpl cups
+x11-libs/libva X
+media-libs/libvpx postproc

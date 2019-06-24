@@ -1,5 +1,2 @@
-=www-client/firefox-60.5.0-r1
-dev-java/java-sdk-docs
-x11-plugins/hexchat-javascript
 =dev-libs/icu-64.2
 =app-office/libreoffice-bin-6.2.4.2
