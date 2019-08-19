@@ -32,7 +32,6 @@
    ["#000000" "#db4334" "#60a060" "#dc7700" "#00a2f5" "#da26ce" "#1ba1a1" "#b2af95"])
  '(ansi-term-color-vector
    [unspecified "#263238" "#f07178" "#c3e88d" "#ffcb6b" "#82aaff" "#c792ea" "#82aaff" "#eeffff"] t)
- '(blink-cursor-mode -1)
  '(browse-url-browser-function (quote browse-url-default-browser))
  '(canlock-password "b9ead6428897f1cd7f97afbfcc1b5e2d095e5111")
  '(column-number-mode t)
@@ -66,10 +65,11 @@ static char *note[] = {
 \"######....\",
 \"#######..#\" };")))
  '(fci-rule-color "#404040")
- '(font-use-system-font t)
+ '(font-use-system-font nil)
  '(geben-dbgp-default-port 9000)
  '(geben-dbgp-default-proxy (quote ("127.0.0.1" 9000 "default" nil t)))
- '(gnus-logo-colors (quote ("#1ec1c4" "#bababa")))
+ '(global-display-line-numbers-mode t)
+ '(gnus-logo-colors (quote ("#1ec1c4" "#bababa")) t)
  '(gnus-mode-line-image-cache
    (quote
     (image :type xpm :ascent center :data "/* XPM */
@@ -92,14 +92,14 @@ static char *gnus-pointer[] = {
 \"######..###.######\",
 \"###....####.######\",
 \"###..######.######\",
-\"###########.######\" };")))
+\"###########.######\" };")) t)
  '(hl-sexp-background-color "#1c1f26")
  '(indent-tabs-mode nil)
  '(menu-bar-mode nil)
  '(nyan-mode t)
  '(package-selected-packages
    (quote
-    (alect-themes annotate atom-one-dark-theme badwolf-theme base16-theme bash-completion common-lisp-snippets cyberpunk-theme dired-atool dired-single docker elpa-audit emmet-mode flymake-css flymake-less highlight-blocks highlight-context-line highlight-defined highlight-indentation highlight-numbers highlight-parentheses highlight-quoted highlight-symbol ix labburn-theme magit-filenotify magit-gh-pulls material-theme multiple-cursors nginx-mode nord-theme overcast-theme pass password-store password-store-otp pastelmac-theme phi-search phi-search-mc php-auto-yasnippets ranger geben flymake-jslint eslint-fix flymake-php docker-compose-mode dockerfile-mode po-mode company web-mode projectile magit company-php ac-php)))
+    (markdown-mode vue-mode vue-html-mode ac-html ac-html-bootstrap alect-themes annotate atom-one-dark-theme badwolf-theme base16-theme bash-completion common-lisp-snippets cyberpunk-theme dired-atool dired-single docker elpa-audit emmet-mode flymake-css flymake-less highlight-blocks highlight-context-line highlight-defined highlight-indentation highlight-numbers highlight-parentheses highlight-quoted highlight-symbol ix labburn-theme magit-filenotify magit-gh-pulls material-theme multiple-cursors nginx-mode nord-theme overcast-theme pass password-store password-store-otp pastelmac-theme phi-search phi-search-mc php-auto-yasnippets ranger geben flymake-jslint eslint-fix flymake-php docker-compose-mode dockerfile-mode po-mode company web-mode projectile magit company-php ac-php)))
  '(rainbow-identifiers-choose-face-function (quote rainbow-identifiers-cie-l*a*b*-choose-face))
  '(rainbow-identifiers-cie-l*a*b*-color-count 1024)
  '(rainbow-identifiers-cie-l*a*b*-lightness 80)
@@ -107,6 +107,7 @@ static char *gnus-pointer[] = {
  '(scroll-bar-mode nil)
  '(send-mail-function (quote smtpmail-send-it))
  '(show-paren-mode t)
+ '(tool-bar-mode nil)
  '(tooltip-mode -1)
  '(vc-annotate-background "#404040")
  '(vc-annotate-color-map
@@ -136,4 +137,4 @@ static char *gnus-pointer[] = {
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Monospace" :foundry "xos4" :slant normal :weight normal :height 110 :width normal)))))
+ '(default ((t (:family "Liberation Mono" :foundry "1ASC" :slant normal :weight normal :height 113 :width normal)))))

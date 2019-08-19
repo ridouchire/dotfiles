@@ -25,3 +25,4 @@
 (global-set-key (kbd "C-c r") 'magit-reset-hard)
 
 (global-set-key (kbd "C-c w") 'whitespace-mode)
+(global-set-key (kbd "C-c m") 'mc/mark-all-like-this-dwim)
