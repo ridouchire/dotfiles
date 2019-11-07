@@ -1,13 +1,13 @@
 x11-libs/libxcb xkb
 x11-terms/rxvt-unicode -alt-font-width 256-color blink unicode3 fading-colors xft buffer-on-clear iso14755 pixbuf secondary-wheel wcwidth -vanilla -font-styles
-media-libs/mesa lm_sensors
+media-libs/mesa lm_sensors -vaapi -opencl -d3d9 -xa gles1 -xvmc vulkan -vdpau
 x11-base/xorg-drivers synaptics
 >=dev-lang/python-2.7.15:2.7 sqlite
 app-editors/emacs X -Xaw3d -png m17n-lib gtk2 -tiff toolkit-scroll-bar -jpeg -imagemagick -dbus git limxml2 libxml2 -toolkit-scroll-bars gtk xft -xpm -inotify -alsa -acl
-media-fonts/terminus-font ru-i X -a-like-o quote -ru-k distinct-l ru-dv -pcf-unicode-only
-www-client/firefox system-harfbuzz system-libvpx system-sqlite system-jpeg -wifi hwaccel system-icu system-libevent geckodriver l10n_ru bindist eme-free
-media-video/mpv lcms drm jpeg zsh-completion libcaca dvd
-dev-lang/php intl sockets xmlwriter threads mysql sodium tidy xslt xmlrpc calendar xmlreader pcntl inifile curl zip pdo ftp zip-encryption cgi mhash gmp mysqli soap -webp -exif phpdbg sqlite
+media-fonts/terminus-font ru-i X -a-like-o quote -ru-k distinct-l -ru-dv -pcf-unicode-only
+www-client/firefox system-harfbuzz system-libvpx system-sqlite system-jpeg -wifi hwaccel system-icu system-libevent -geckodriver l10n_ru bindist eme-free -webdriver -gmp-autoupdate -screenshot
+media-video/mpv lcms drm jpeg zsh-completion libcaca dvd cdda vaapi vdpau
+dev-lang/php intl sockets xmlwriter -threads mysql -sodium -tidy -xslt -xmlrpc -calendar xmlreader pcntl inifile curl -zip pdo -ftp -zip-encryption cgi mhash -gmp mysqli -soap -webp -exif -phpdbg -sqlite -ipv6 -opcache -berkdb phar -gdbm
 dev-db/mysql -latin1 perl server
 media-video/ffmpeg gnutls opus vdpau vpx webp wavpack x264 mp3 openh264 x265 vorbis vaapi opengl xvid
 media-gfx/geeqie tiff jpeg xmp
@@ -34,9 +34,44 @@ www-client/w3mmee gpm imlib xface
 sys-apps/smartmontools -daemon
 net-misc/dhcpcd -ipv6
 games-roguelike/stone-soup sound
-sys-power/nvclock nvcontrol
+sys-power/nvclock nvcontrol -gtk
 net-im/skypeforlinux consolekit
 sys-auth/polkit consolekit
 app-text/ghostscript-gpl cups
 x11-libs/libva X
-media-libs/libvpx postproc
+media-libs/libvpx postprocdev-lang/python sqlite postproc
+dev-libs/gobject-introspection cairo
+app-text/poppler cairo
+x11-libs/pango X
+dev-libs/libxml2 python
+dev-db/sqlite secure-delete
+net-libs/tox dht-node ipv6
+net-irc/weechat -python_targets_python3_7 python_targets_python3_6 -python_single_target_python3_7 python_single_target_python3_6 logger python trigger -irc -perl fifo -exec -xfer fset -relay -spell -php
+virtual/ffmpeg x264
+www-client/netsurf truetype gtk2
+games-strategy/0ad pch
+media-libs/harfbuzz icu
+net-libs/libtorrent-rasterbar python
+dev-vcs/git emacs
+dev-libs/libpcre2 pcre16
+app-emacs/emacs-common-gentoo X
+app-admin/sudo -sendmail
+app-text/djvu jpeg tiff xml
+sys-apps/util-linux static-libs
+media-sound/fluidsynth ladspa
+media-libs/libsdl2 X opengl
+www-client/firefox-bin l10n_ru
+net-wireless/bluez midi
+x11-libs/libdrm -nouveau
+dev-java/openjdk-bin gentoo-vm
+app-laptop/laptop-mode-tools bluetooth -apm
+dev-lang/python sqlite
+dev-libs/xmlsec nss
+sci-geosciences/gpsd usb X qt5 bluetooth python gpsd_protocols_nmea0183 gpsd_protocols_fury gpsd_protocols_nmea2000 gpsd_protocols_passthrough gpsd_protocols_geostar
+sys-auth/consolekit policykit
+dev-libs/glib dbus
+net-dialup/ppp atm eap-tls dhcp
+sys-fs/lvm2 -udev
+sys-apps/pciutils -udev
+dev-libs/boost python
+app-backup/bacula X
