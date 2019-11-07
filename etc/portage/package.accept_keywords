@@ -1,35 +1,58 @@
-dev-php/semver ~amd64
-dev-php/ca-bundle ~amd64
-dev-php/xdebug-handler ~amd64
-dev-php/symfony-process ~amd64
-dev-php/psr-log ~amd64
-dev-php/symfony-finder ~amd64
-dev-php/symfony-dependency-injection ~amd64
-dev-php/symfony-config ~amd64
-dev-php/composer ~amd64
-dev-php/symfony-event-dispatcher ~amd64
-dev-php/symfony-console ~amd64
-dev-php/phar-utils ~amd64
-dev-php/symfony-filesystem ~amd64
-dev-php/jsonlint ~amd64
-dev-php/json-schema ~amd64
-dev-php/spdx-licenses ~amd64
-dev-libs/olm ~amd64
-=dev-python/python-olm-9999 **
+dev-php/semver
+dev-php/ca-bundle
+dev-php/xdebug-handler
+dev-php/symfony-process
+dev-php/psr-log
+dev-php/symfony-finder
+dev-php/symfony-dependency-injection
+dev-php/symfony-config
+dev-php/composer
+dev-php/symfony-event-dispatcher
+dev-php/symfony-console
+dev-php/phar-utils
+dev-php/symfony-filesystem
+dev-php/jsonlint
+dev-php/json-schema
+dev-php/spdx-licenses
+dev-libs/olm
+dev-python/python-olm ~amd64
 dev-python/h11 ~amd64
 =dev-python/matrix-nio-9999 **
-dev-python/attrs ~amd64
-dev-python/hyperframe ~amd64
-dev-python/hyper-h2 ~amd64
-dev-python/future ~amd64
-net-libs/tox ~amd64
-dev-python/logbook ~amd64
-dev-python/atomicwrites ~amd64
-media-sound/auryo-bin ~amd64
-net-irc/weechat ~amd64
-=dev-util/mdds-9999 **
-net-im/telegram-desktop-bin ~amd64
-sys-apps/baselayout-java ~amd64
-games-roguelike/stone-soup ~amd64
-dev-java/openjdk-bin ~amd64
-dev-libs/nss ~amd64
+=net-libs/tox-9999-r1 **
+dev-python/attrs
+dev-python/hyperframe
+dev-python/hyper-h2
+dev-python/future
+net-libs/tox
+dev-python/logbook
+dev-python/atomicwrites
+media-sound/auryo-bin
+dev-util/mdds
+net-im/telegram-desktop-bin
+sys-apps/baselayout-java
+games-roguelike/stone-soup
+dev-java/openjdk-bin
+dev-libs/nss
+www-client/firefox
+media-libs/libvpx
+dev-util/cbindgen
+dev-libs/nspr
+media-libs/dav1d
+net-libs/gloox
+games-strategy/0ad-data
+games-strategy/0ad
+media-libs/harfbuzz
+games-emulation/ppsspp ~amd64
+virtual/rust ~amd64
+virtual/cargo ~amd64
+dev-lang/rust ~amd64
+net-wireless/blueman ~amd64
+dev-util/idea-community ~amd64
+dev-java/openjdk-jre-bin ~amd64
+media-libs/stk ~amd64
+media-sound/lmms ~amd64
+net-libs/wvstreams ~amd64
+app-text/hunspell ~amd64
+dev-libs/boost ~amd64
+dev-util/boost-build ~amd64
+
