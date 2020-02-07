@@ -24,7 +24,3 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.twig\\'" . web-mode))
-
-
-;; (require 'ac-html-csswatcher)
-;; (ac-html-csswatcher-setup)

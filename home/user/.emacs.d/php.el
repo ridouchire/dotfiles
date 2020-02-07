@@ -2,7 +2,7 @@
 (load "~/.emacs.d/help-dwim.el")
 (load "~/.emacs.d/tree-mode.el")
 (load "~/.emacs.d/php-doc.el")
-(setq php-doc-directory "/usr/share/doc/php-doc/html")
+(setq php-doc-directory "/usr/share/doc/php-docs-20101029-r1/en/php-chunked-xhtml")
 
 (defun ywb-php-lineup-arglist-intro (langelem)
   (save-excursion
