@@ -20,6 +20,7 @@
 (load "~/.emacs.d/php.el")
 (load "~/.emacs.d/lisp.el")
 (load "~/.emacs.d/ibuffer.el")
+(load "~/.emacs.d/org.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

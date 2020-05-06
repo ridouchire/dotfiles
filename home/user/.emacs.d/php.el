@@ -41,11 +41,11 @@
         (message "No symbol at point.")
       (end-of-line)
       (newline-and-indent)
-      (insert (concat "var_dump($" (symbol-name symbol) ");")))))
+      (insert (concat "var_dump(" (symbol-name symbol) ");")))))
 
-(defun check-codestyle ()
+(defun run-code ()
   (interactive)
-  (compile (concat "phpcs --standard=CSCart " (buffer-file-name (current-buffer)))))
+  (compile (concat "php " (buffer-file-name (current-buffer)))))
 
 (defun ac-php-tags ()
   (require 'ac-php)
@@ -61,7 +61,7 @@
   (local-set-key "\t" 'php-doc-complete-function)
   (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point)
   (define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back)
-  (define-key php-mode-map (kbd "<f5>") 'check-codestyle))
+  (define-key php-mode-map (kbd "<f5>") 'run-code))
 
 (add-hook 'php-mode-hook 'my-work-mode-stuff)
 (add-hook 'php-mode-hook 'ac-php-tags)
