@@ -1,1 +1,7 @@
+
+# required by app-office/libreoffice-bin-6.2.5.2::gentoo
+# required by @selected
+# required by @world (argument)
+# /etc/portage/package.mask:
 =dev-libs/icu-64.2
+>=sys-kernel/gentoo-sources-5.4.8

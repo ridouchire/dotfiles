@@ -1,6 +1,6 @@
 x11-libs/libxcb xkb
 x11-terms/rxvt-unicode -alt-font-width 256-color blink unicode3 fading-colors xft buffer-on-clear iso14755 pixbuf secondary-wheel wcwidth -vanilla -font-styles
-media-libs/mesa lm_sensors -vaapi -opencl -d3d9 -xa gles1 -xvmc vulkan -vdpau
+media-libs/mesa lm_sensors -vaapi -opencl -d3d9 -xa gles1 -xvmc -vulkan -vdpau lm-sensors
 x11-base/xorg-drivers synaptics
 >=dev-lang/python-2.7.15:2.7 sqlite
 app-editors/emacs X -Xaw3d -png m17n-lib gtk2 -tiff toolkit-scroll-bar -jpeg -imagemagick -dbus git limxml2 libxml2 -toolkit-scroll-bars gtk xft -xpm -inotify -alsa -acl
@@ -14,7 +14,7 @@ media-gfx/geeqie tiff jpeg xmp
 media-libs/imlib2 mp3 jpeg tiff png gif
 media-sound/moc flac curl mad sndfile vorbis tremor libsamplerate aac -timidity musepack wavpack speex sid ffmpeg
 mail-client/thunderbird-bin -crashreporter -pulseaudio
-net-wireless/wpa_supplicant ap p2p eap-sim fasteap wps suiteb tdls encommon-eap-types uncommon-eap-types
+net-wireless/wpa_supplicant -ap -p2p -eap-sim -fasteap -wps suiteb -tdls encommon-eap-types -uncommon-eap-types -hs2-0 -fils
 app-portage/layman sync-plugin-portage
 net-p2p/deluge geoip gtk console
 sys-power/pm-utils ntp
@@ -51,20 +51,31 @@ virtual/ffmpeg x264
 www-client/netsurf truetype gtk2
 games-strategy/0ad pch
 media-libs/harfbuzz icu
+# required by net-p2p/deluge-1.3.15-r3::gentoo
+# required by @selected
+# required by @world (argument)
 net-libs/libtorrent-rasterbar python
 dev-vcs/git emacs
+# required by dev-qt/qtcore-5.12.3::gentoo
+# required by dev-qt/qtgui-5.12.3-r1::gentoo
+# required by dev-qt/qtopengl-5.12.3::gentoo
+# required by games-emulation/ppsspp-1.5.4-r2::gentoo[qt5]
+# required by ppsspp (argument)
 dev-libs/libpcre2 pcre16
+# required by app-editors/emacs-26.2::gentoo
+# required by @selected
+# required by @world (argument)
 app-emacs/emacs-common-gentoo X
 app-admin/sudo -sendmail
 app-text/djvu jpeg tiff xml
 sys-apps/util-linux static-libs
 media-sound/fluidsynth ladspa
 media-libs/libsdl2 X opengl
-www-client/firefox-bin l10n_ru
+www-client/firefox-bin l10n_ru -pulseaudio
 net-wireless/bluez midi
 x11-libs/libdrm -nouveau
 dev-java/openjdk-bin gentoo-vm
-app-laptop/laptop-mode-tools bluetooth -apm
+app-laptop/laptop-mode-tools -bluetooth -apm
 dev-lang/python sqlite
 dev-libs/xmlsec nss
 sci-geosciences/gpsd usb X qt5 bluetooth python gpsd_protocols_nmea0183 gpsd_protocols_fury gpsd_protocols_nmea2000 gpsd_protocols_passthrough gpsd_protocols_geostar
@@ -75,3 +86,14 @@ sys-fs/lvm2 -udev
 sys-apps/pciutils -udev
 dev-libs/boost python
 app-backup/bacula X
+x11-libs/libxkbcommon X
+media-libs/gegl cairo
+dev-games/openscenegraph png trutype jpeg sdl svg ffmpeg truetype
+sys-apps/inxi opengl hddtemp
+media-sound/qjackctl alsa
+dev-games/mygui -ogre
+net-wireless/iwd -crda
+media-libs/libglvnd X
+app-crypt/gnupg -smartcard
+www-client/palemoon threads
+media-libs/libpng apng

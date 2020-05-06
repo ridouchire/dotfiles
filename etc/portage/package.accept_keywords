@@ -1,3 +1,5 @@
+# required by dev-php/composer-1.8.0::gentoo
+# required by composer (argument)
 dev-php/semver
 dev-php/ca-bundle
 dev-php/xdebug-handler
@@ -14,9 +16,15 @@ dev-php/symfony-filesystem
 dev-php/jsonlint
 dev-php/json-schema
 dev-php/spdx-licenses
+# required by dev-libs/olm (argument)
 dev-libs/olm
+# required by dev-python/matrix-nio-9999::booboo
+# required by matrix-nio (argument)
 dev-python/python-olm ~amd64
+# required by dev-python/matrix-nio-9999::booboo
+# required by matrix-nio (argument)
 dev-python/h11 ~amd64
+# required by matrix-nio (argument)
 =dev-python/matrix-nio-9999 **
 =net-libs/tox-9999-r1 **
 dev-python/attrs
@@ -27,7 +35,10 @@ net-libs/tox
 dev-python/logbook
 dev-python/atomicwrites
 media-sound/auryo-bin
+# required by app-text/libetonyek-0.1.9::gentoo
+# required by @__auto_slot_operator_replace_installed__ (argument)
 dev-util/mdds
+# required by telegram-desktop-bin (argument)
 net-im/telegram-desktop-bin
 sys-apps/baselayout-java
 games-roguelike/stone-soup
@@ -42,6 +53,7 @@ net-libs/gloox
 games-strategy/0ad-data
 games-strategy/0ad
 media-libs/harfbuzz
+# required by ppsspp (argument)
 games-emulation/ppsspp ~amd64
 virtual/rust ~amd64
 virtual/cargo ~amd64
@@ -49,10 +61,15 @@ dev-lang/rust ~amd64
 net-wireless/blueman ~amd64
 dev-util/idea-community ~amd64
 dev-java/openjdk-jre-bin ~amd64
+#required by lmms
 media-libs/stk ~amd64
 media-sound/lmms ~amd64
+#required by wvdial
 net-libs/wvstreams ~amd64
 app-text/hunspell ~amd64
 dev-libs/boost ~amd64
 dev-util/boost-build ~amd64
-
+media-plugins/alsaequal ~amd64
+games-engines/openmw ~amd64
+sys-apps/inxi ~amd64
+app-misc/grc ~amd64

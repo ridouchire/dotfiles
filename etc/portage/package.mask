@@ -1,3 +1,6 @@
 =dev-libs/icu-64.2
 =app-office/libreoffice-bin-6.2.4.2
+>www-client/firefox-69.0
 <=www-client/firefox-60.9.0
+#=dev-util/boost-build-1.72.0
+#=net-libs/libtorrent-rasterbar-1.2.2-r1
