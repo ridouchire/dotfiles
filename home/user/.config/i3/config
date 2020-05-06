@@ -1,7 +1,7 @@
 set $mod Mod4
 set $i3_path /home/alex/.i3
 
-font pango:Terminus 12
+font pango:xos4 Terminus 12
 
 set $w1  1:console
 set $w2  2:network
@@ -34,11 +34,12 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-set $mode_system System (e) logout, (r) reboot, (Shift+s) shutdown
+set $mode_system System (e) logout, (r) reboot, (p) suspend, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym e exec --no-startup-id killall X, mode "default"
-    bindsym r exec --no-startup-id reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id poweroff, mode "default"
+    bindsym e exec --no-startup-id sudo killall X, mode "default"
+    bindsym r exec --no-startup-id sudo reboot, mode "default"
+    bindsym p exec --no-startup-id sudo pm-suspend, mode "default"
+    bindsym Shift+s exec --no-startup-id sudo poweroff, mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -107,7 +108,7 @@ bindsym $mod+Shift+8 move container to workspace $w8
 bindsym $mod+Shift+9 move container to workspace $w9
 bindsym $mod+Shift+0 move container to workspace $w10
 
-bindsym $mod+Ctrl+l exec i3lock -i ~/.local/data/locked.png
+bindsym $mod+Ctrl+l exec i3lock -c 000000
 bindsym XF86ScreenSaver       exec "i3lock -c 111111"
 bindsym XF86AudioRaiseVolume  exec "amixer sset Master '5%+'"
 bindsym XF86AudioLowerVolume  exec "amixer sset Master '5%-'"
@@ -115,13 +116,14 @@ bindsym XF86AudioMute         exec "amixer sset Master toggle"
 bindsym XF86AudioMicMute      exec "amixer sset Capture toggle"
 bindsym XF86MonBrightnessUp   exec "~/.local/bin/backlight.sh +"
 bindsym XF86MonBrightnessDown exec "~/.local/bin/backlight.sh -"
-bindsym XF86Sleep             exec "pm-suspend"
-bindsym XF86Suspend           exec "pm-suspend"
+bindsym XF86Sleep             exec "sudo pm-suspend"
+bindsym XF86Suspend           exec "sudo pm-suspend"
+bindsym XF86Battery           exec "sudo /usr/local/bin/cpu-slow"
 bindsym XF86AudioPlay         exec "mocp -U"
 bindsym XF86AudioStop         exec "mocp -P"
 bindsym XF86AudioNext         exec "mocp -f"
 bindsym XF86AudioPrev         exec "mocp -r"
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="/usr/bin/dmenu -fn 'xft:Hermit:pixelsize=10' -nb '#191919' -nf '#9ac0cd' -sb '#191919' -sf '#bf3f34' -p 'search app >> '"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="/usr/bin/dmenu -fn 'xft:Hermit:pixelsize=16' -nb '#191919' -nf '#9ac0cd' -sb '#191919' -sf '#bf3f34' -p 'search app >> '"
 
 bar {
         tray_output primary
@@ -141,11 +143,7 @@ client.unfocused         #222222 #111111 #aaaaaa #2e9ef4
 client.focused           #222222 #888888 #000000 #2e9ef4
 
 ## Autostart section
-exec --no-startup-id emacs
-exec --no-startup-id firefox
-exec --no-startup-id xsetroot -bg black
+#exec --no-startup-id emacs
+#exec --no-startup-id firefox
 exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:caps"
-exec --no-startup-id sudo iptables -A INPUT -m tcp -p tcp --dport 22 -j REJECT
-exec --no-startup-id sudo iptables -A INPUT -m tcp -p tcp --dport 80 -j REJECT
-exec --no-startup-id sudo iptables -A INPUT -m tcp -p tcp --dport 3389 -j REJECT
-exec --no-startup-id sudo iptables -A INPUT -m tcp -p tcp --dport 9999 -j REJECT
+exec --no-startup-id xsetroot -bg black

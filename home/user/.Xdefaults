@@ -41,6 +41,8 @@ URxvt.pastableTabs:     true
 URxvt.secondaryScroll: 0
 URxvt.secondaryScreen: 1
 
+URxvt.urgentOnBell: true
+
 !=== НАСТРОЙКИ ОБРАБОТКИ ССЫЛОК ===
 URxvt.url-launcher:        firefox-bin
 URxvt.url-select.launcher: firefox-bin
