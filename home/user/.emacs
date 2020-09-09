@@ -21,6 +21,7 @@
 (load "~/.emacs.d/lisp.el")
 (load "~/.emacs.d/ibuffer.el")
 (load "~/.emacs.d/org.el")
+(load "~/.emacs.d/elcord.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
