@@ -71,3 +71,4 @@ URxvt.utmpInhibit:      true
 !=== НАСТРОЙКИ РАСШИРЕНИЙ ===
 URxvt.perl-lib:         /usr/lib/urxvt/perl/
 URxvt.perl-ext-common:  default,matcher,url-select,clipboard-osc
+tkabber*font: -*-terminus-medium-r-*-*-*-120-*-*-*-iso8859-1
