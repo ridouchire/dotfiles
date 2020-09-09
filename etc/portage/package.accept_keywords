@@ -73,3 +73,4 @@ media-plugins/alsaequal ~amd64
 games-engines/openmw ~amd64
 sys-apps/inxi ~amd64
 app-misc/grc ~amd64
+net-im/discord-bin ~amd64

@@ -3,7 +3,7 @@ x11-terms/rxvt-unicode -alt-font-width 256-color blink unicode3 fading-colors xf
 media-libs/mesa lm_sensors -vaapi -opencl -d3d9 -xa gles1 -xvmc -vulkan -vdpau lm-sensors
 x11-base/xorg-drivers synaptics
 >=dev-lang/python-2.7.15:2.7 sqlite
-app-editors/emacs X -Xaw3d -png m17n-lib gtk2 -tiff toolkit-scroll-bar -jpeg -imagemagick -dbus git limxml2 libxml2 -toolkit-scroll-bars gtk xft -xpm -inotify -alsa -acl
+app-editors/emacs X -Xaw3d -png m17n-lib gtk2 -tiff toolkit-scroll-bar -jpeg -imagemagick -dbus git limxml2 libxml2 -toolkit-scroll-bars gtk xft -xpm -inotify -alsa -acl gpm gui
 media-fonts/terminus-font ru-i X -a-like-o quote -ru-k distinct-l -ru-dv -pcf-unicode-only
 www-client/firefox system-harfbuzz system-libvpx system-sqlite system-jpeg -wifi hwaccel system-icu system-libevent -geckodriver l10n_ru bindist eme-free -webdriver -gmp-autoupdate -screenshot
 media-video/mpv lcms drm jpeg zsh-completion libcaca dvd cdda vaapi vdpau
@@ -97,3 +97,12 @@ media-libs/libglvnd X
 app-crypt/gnupg -smartcard
 www-client/palemoon threads
 media-libs/libpng apng
+sys-apps/dbus X
+x11-base/xorg-server -elogind
+x11-libs/cairo X
+app-text/xmlto text
+app-emacs/emacs-common-gentoo gui
+net-im/tkabber plugins
+dev-tcltk/tdom threads
+dev-tcltk/tktray threads
+dev-lang/tk truetype
