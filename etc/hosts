@@ -1,7 +1,7 @@
-127.0.0.1	localhost
-127.0.0.1       ubuntop
-127.0.0.1       demo.ume.69.mu
+127.0.0.1	localhost thinkpad.loc booru.thinkpad.loc parus.thinkpad.loc metrics.thinkpad.loc
+172.30.0.6      point.local i.point.local arts.point.local
 0.0.0.0         localhost
+
 
 # local ritsu subnets
 192.168.88.1    mikrotik.loc
@@ -15,6 +15,7 @@
 192.168.88.185  secure-files
 
 # remote private network
+
 149.154.69.91   area3vfds
 #149.154.69.91   parus.demoteam.ch
 82.146.62.76    area4japan
@@ -22,29 +23,29 @@
 95.104.193.1    area1gene
 178.79.132.152  area5london
 178.79.131.248  area6london
+172.104.240.202 area7germany
 
-# remote public network
+#remote public network
 163.172.167.207 bt.t-ru.org
 163.172.167.207 bt2.t-ru.org
 163.172.167.207 bt3.t-ru.org
 163.172.167.207 bt4.t-ru.org
 
 # docker www-servers
-#172.18.0.2   img-host.loc
-##172.36.0.2   cart.loc
+#172.18.0.2    img-host.loc
+#172.36.0.2    cart.loc
 172.22.0.2    sandbox.loc
-#172.23.0.2    helpdesk.loc
-#172.25.0.2    ru.loc
-#172.28.0.2    com.loc
+172.23.0.2    helpdesk.loc
+172.25.0.2    ru.loc
+172.28.0.2    com.loc
 172.30.0.2    api.loc
 172.35.0.2    mediline.loc
-172.30.0.6    point.local i.point.local arts.point.local
 
 # database for docker containers 
 #172.36.0.4    db_cart
 172.22.0.4    db_old
-#172.23.0.4    db_desk
-#172.25.0.4    db_csru
-#172.28.0.4    db_cscm
+172.23.0.4    db_desk
+172.25.0.4    db_csru
+172.28.0.4    db_cscm
 172.30.0.4    db_api
 172.35.0.4    db_mediline
