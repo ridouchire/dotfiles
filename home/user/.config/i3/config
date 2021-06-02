@@ -109,7 +109,7 @@ bindsym $mod+Shift+9 move container to workspace $w9
 bindsym $mod+Shift+0 move container to workspace $w10
 
 bindsym $mod+Ctrl+l exec i3lock -c 000000
-bindsym XF86ScreenSaver       exec "i3lock -c 111111"
+bindsym XF86ScreenSaver       exec "i3lock -i /usr/share/slim/themes/gentoo/background.png"
 bindsym XF86AudioRaiseVolume  exec "amixer sset Master '5%+'"
 bindsym XF86AudioLowerVolume  exec "amixer sset Master '5%-'"
 bindsym XF86AudioMute         exec "amixer sset Master toggle"
@@ -130,7 +130,7 @@ bar {
         position bottom
 	status_command i3status -c ~/.config/i3/i3status.conf
         colors {
-	    background         #111111
+	    background         #333333
             statusline         #CCCCCC
             focused_workspace  #000000 #888888
             active_workspace   #cccccc #222222
@@ -145,5 +145,6 @@ client.focused           #222222 #888888 #000000 #2e9ef4
 ## Autostart section
 #exec --no-startup-id emacs
 #exec --no-startup-id firefox
-exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:caps"
+#exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:caps"
 exec --no-startup-id xsetroot -bg black
+exec --no-startup-id feh --bg-scale /usr/share/slim/themes/gentoo/background.png

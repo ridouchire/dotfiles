@@ -1,8 +1,4 @@
-;;no-border
-msg-module
-msg-color
-term-osd-bar
-screenshot-fromat=png
+screenshot-format=png
 screenshot-png-compression=8
 screenshot-template='~/%F (%P) %n'
 
