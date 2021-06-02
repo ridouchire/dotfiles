@@ -6,7 +6,7 @@
 # you shouldn't specify the trailing ".psf.gz", just the font name below.
 # To use the default console font, comment out the CONSOLEFONT setting below.
 #consolefont="default8x16"
-consolefont="crox4h"
+consolefont="ter-u16n"
 
 # consoletranslation is the charset map file to use.  Leave commented to use
 # the default one.  Have a look in /usr/share/consoletrans for a selection of
