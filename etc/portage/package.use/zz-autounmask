@@ -3,11 +3,11 @@ x11-terms/rxvt-unicode -alt-font-width 256-color blink unicode3 fading-colors xf
 media-libs/mesa lm_sensors -vaapi -opencl -d3d9 -xa gles1 -xvmc -vulkan -vdpau lm-sensors
 x11-base/xorg-drivers synaptics
 >=dev-lang/python-2.7.15:2.7 sqlite
-app-editors/emacs X -Xaw3d -png m17n-lib gtk2 -tiff toolkit-scroll-bar -jpeg -imagemagick -dbus git limxml2 libxml2 -toolkit-scroll-bars gtk xft -xpm -inotify -alsa -acl gpm gui
+app-editors/emacs X -Xaw3d -png m17n-lib gtk2 -tiff toolkit-scroll-bar -jpeg -imagemagick -dbus git limxml2 libxml2 -toolkit-scroll-bars gtk xft -xpm -inotify -alsa -acl gpm gui lcms harfbuzz
 media-fonts/terminus-font ru-i X -a-like-o quote -ru-k distinct-l -ru-dv -pcf-unicode-only
 www-client/firefox system-harfbuzz system-libvpx system-sqlite system-jpeg -wifi hwaccel system-icu system-libevent -geckodriver l10n_ru bindist eme-free -webdriver -gmp-autoupdate -screenshot
-media-video/mpv lcms drm jpeg zsh-completion libcaca dvd cdda vaapi vdpau
-dev-lang/php intl sockets xmlwriter -threads mysql -sodium -tidy -xslt -xmlrpc -calendar xmlreader pcntl inifile curl -zip pdo -ftp -zip-encryption cgi mhash -gmp mysqli -soap -webp -exif -phpdbg -sqlite -ipv6 -opcache -berkdb phar -gdbm
+media-video/mpv lcms drm jpeg zsh-completion libcaca dvd cdda -vaapi -vdpau
+dev-lang/php intl sockets xmlwriter -threads mysql -sodium -tidy -xslt -xmlrpc -calendar xmlreader pcntl inifile curl -zip pdo -ftp -zip-encryption cgi mhash -gmp mysqli -soap -webp -exif -phpdbg sqlite -ipv6 -opcache -berkdb phar -gdbm
 dev-db/mysql -latin1 perl server
 media-video/ffmpeg gnutls opus vdpau vpx webp wavpack x264 mp3 openh264 x265 vorbis vaapi opengl xvid
 media-gfx/geeqie tiff jpeg xmp
@@ -33,7 +33,7 @@ net-im/gajim jingle
 www-client/w3mmee gpm imlib xface
 sys-apps/smartmontools -daemon
 net-misc/dhcpcd -ipv6
-games-roguelike/stone-soup sound
+games-roguelike/stone-soup sound -ncurses
 sys-power/nvclock nvcontrol -gtk
 net-im/skypeforlinux consolekit
 sys-auth/polkit consolekit
@@ -106,3 +106,10 @@ net-im/tkabber plugins
 dev-tcltk/tdom threads
 dev-tcltk/tktray threads
 dev-lang/tk truetype
+media-libs/sdl2-image png
+app-emulation/containerd device-mapper
+media-plugins/alsa-plugins pulseaudio
+x11-misc/i3status -pulseaudio
+media-sound/apulse sdk
+net-misc/asterisk mysql vorbis http speex odbc lua
+app-emacs/emacs-common gui

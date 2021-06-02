@@ -8,7 +8,8 @@ dev-php/psr-log
 dev-php/symfony-finder
 dev-php/symfony-dependency-injection
 dev-php/symfony-config
-dev-php/composer
+dev-php/composer ~amd64
+dev-php/reactphp-promise ~amd64
 dev-php/symfony-event-dispatcher
 dev-php/symfony-console
 dev-php/phar-utils
@@ -74,3 +75,15 @@ games-engines/openmw ~amd64
 sys-apps/inxi ~amd64
 app-misc/grc ~amd64
 net-im/discord-bin ~amd64
+dev-ruby/rails ~amd64
+dev-ruby/actioncable ~amd64
+dev-ruby/actionmailbox ~amd64
+dev-ruby/actionmailer ~amd64
+dev-ruby/actionpack ~amd64
+dev-ruby/actiontext ~amd64
+dev-ruby/actionview ~amd64
+dev-ruby/activejob ~amd64
+dev-ruby/activemodel ~amd64
+=app-editors/emacs-28.0.9999 **
+dev-lang/php ~amd64
+app-eselect/eselect-php ~amd64
