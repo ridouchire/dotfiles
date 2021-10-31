@@ -5,3 +5,5 @@
 # /etc/portage/package.mask:
 =dev-libs/icu-64.2
 >=sys-kernel/gentoo-sources-5.4.8
+sys-apps/opentmpfiles
+dev-perl/SGMLSpm

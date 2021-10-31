@@ -4,3 +4,4 @@
 <=www-client/firefox-60.9.0
 #=dev-util/boost-build-1.72.0
 #=net-libs/libtorrent-rasterbar-1.2.2-r1
+>=dev-util/pkgconfig-0.29.2
