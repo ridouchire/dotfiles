@@ -22,7 +22,7 @@ dev-libs/m17n-lib xft
 media-gfx/gimp jpeg tiff svg xpm mng exif png jpeg2k wmf
 dev-lang/ruby socks5 -xemacs tk
 app-emulation/docker device-mapper
-sys-libs/glibc -multiarhc -multiarch
+sys-libs/glibc -multiarhc -multiarch -crypt
 app-admin/pass zsh-completion dmenu
 media-sound/audacity ffmpeg alsa id3tag
 media-libs/libsdl X opengl
@@ -114,3 +114,4 @@ media-sound/apulse sdk
 net-misc/asterisk mysql vorbis http speex odbc lua
 app-emacs/emacs-common gui
 media-libs/freetype harfbuzz
+sys-libs/libxcrypt system split-usr

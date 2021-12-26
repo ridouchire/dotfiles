@@ -1,4 +1,4 @@
-127.0.0.1	localhost thinkpad.loc booru.thinkpad.loc parus.thinkpad.loc metrics.thinkpad.loc
+127.0.0.1	localhost thinkpad.loc booru.thinkpad.loc parus.thinkpad.loc mediline.thinkpad.loc pissykaka.thinkpad.loc
 172.30.0.6      point.local i.point.local arts.point.local
 0.0.0.0         localhost
 
@@ -34,16 +34,16 @@
 # docker www-servers
 #172.18.0.2    img-host.loc
 #172.36.0.2    cart.loc
-172.22.0.2    sandbox.loc
+172.32.0.2    sandbox.loc
 172.23.0.2    helpdesk.loc
 172.25.0.2    ru.loc
 172.28.0.2    com.loc
 172.30.0.2    api.loc
-172.35.0.2    mediline.loc
+172.35.0.2    stompro.loc
 
 # database for docker containers 
 #172.36.0.4    db_cart
-172.22.0.4    db_old
+172.32.0.4    db_old
 172.23.0.4    db_desk
 172.25.0.4    db_csru
 172.28.0.4    db_cscm
