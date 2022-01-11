@@ -27,13 +27,6 @@
             (package-install package)))
       packagesList)
 
-;;(loop
-;; for from across "йцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖ\ЭЯЧСМИТЬБЮ№"
-;; for to   across "qwertyuiop[]asdfghjkl;'zxcvbnm,.QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>#"
-;; do
-;; (eval `(define-key key-translation-map (kbd ,(concat "C-" (string from))) (kbd ,(concat "C-" (string to)))))
-;; (eval `(define-key key-translation-map (kbd ,(concat "M-" (string from))) (kbd ,(concat "M-" (string to))))))
-
 (defun move-line-up ()
     (interactive)
     (transpose-lines 1)
@@ -77,15 +70,12 @@
 ;;
 (setq ibuffer-saved-filter-groups
       (quote (("default"
-               ("dired"       (mode . dired-mode))
+	       ("dired"       (mode . dired-mode))
 	       ("PHP"         (mode . php-mode))
-               ("JavaScript"  (mode . javascript-mode))
+	       ("JavaScript"  (mode . javascript-mode))
 	       ("HTML"        (mode . web-mode))
-	       ("XML"         (mode . nxml-mode))
-	       ("Emacs"       (or
-			       (name . "^\\*scratch\\*$")
-			       (name . "^\\.emacs")
-			       (name . "^\\*Messages\\*$")))))))
+	       ("Docker"      (or (mode . dockerfile-mode) (mode . docker-compose-mode)))
+	       ("Emacs"       (or (name . "^\\*scratch\\*$") (name . "^\\.emacs") (name . "^\\*Messages\\*$")))))))
 
 (add-hook 'ibuffer-mode-hook (lambda () (ibuffer-switch-to-saved-filter-groups "default")))
 (add-hook 'ibuffer-mode-hook (lambda () (setq ibuffer-formats '((mark modified read-only " " (name 18 200 :left :elide) " " filename-and-process)))))
@@ -93,7 +83,6 @@
 ;;
 ;; customization
 ;;
-
 (setq-default ac-auto-start t)
 (setq-default ac-auto-show-menu t)
 (setq-default c-basic-offset 4)
@@ -106,38 +95,26 @@
 (setq auto-save-file-list nil)
 (setq word-wrap t)
 (setq indent-tab-mode nil)
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "firefox-bin")
+(setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "firefox-bin")
 (setq ido-virtual-buffers t)
 (setq scroll-step 1)
 (setq scroll-margin 10)
 (setq scroll-conservatively 10000)
 (setq query-replace-highlight t)
 
-
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
+(scroll-bar-mode -1)
 (size-indication-mode -1)
 (column-number-mode t)
 (line-number-mode t)
 
-;; (setq linum-mode-inhibit-modes-list '(eshell-mode
-;;                                       shell-mode
-;;                                       erc-mode
-;;                                       jabber-roster-mode
-;;                                       jabber-chat-mode
-;;                                       gnus-group-mode
-;;                                       gnus-summary-mode
-;;                                       gnus-article-mode))
-;;(setq dired-recursive-deletes 'top)
-
 ;;
 ;; web-mode
 ;;
-
 (require 'web-mode)
 (setq web-mode-enable-auto-pairing t)
 (setq web-mode-enable-block-face t)
@@ -173,18 +150,38 @@
 (require 'ac-php)
 (require 'company-php)
 
-(defun ywb-php-lineup-arglist-intro (langelem)
+(defun php-ywb-lineup-arglist-intro (langelem)
   (save-excursion
     (goto-char (cdr langelem))
     (vector (+ (current-column) c-basic-offset))))
 
-(defun ywb-php-lineup-arglist-close (langelem)
+(defun php-ywb-lineup-arglist-close (langelem)
   (save-excursion
     (goto-char (cdr langelem))
     (vector (current-column))))
 
-(c-set-offset 'arglist-intro 'ywb-php-lineup-arglist-intro)
-(c-set-offset 'arglist-close 'ywb-php-lineup-arglist-close)
+(c-set-offset 'arglist-intro 'php-ywb-lineup-arglist-intro)
+(c-set-offset 'arglist-close 'php-ywb-lineup-arglist-close)
+
+(defun php-search-symbol-in-docs ()
+  (interactive)
+  (let ((symbol (symbol-at-point)))
+    (if (not symbol)
+	(message "No symbol at point")
+      (browse-url (concat "https://php.net/manual-lookup.php?pattern=" (symbol-name symbol))))))
+
+(defun php-insert-var-dump-with-symbol ()
+  (interactive)
+  (let ((symbol (symbol-at-point)))
+    (if (not symbol)
+	(message "No symbol at point")
+      (end-of-line)
+      (newline-and-indent)
+      (insert (concat "var_dump(" (symbol-name symbol) ");")))))
+
+(defun php-run-code ()
+  (interactive)
+  (compile (concat "php " (buffer-file-name (current-buffer)))))
 
 (setq ac-sources '(ac-sources-php))
 (setq c-default-style "psr2")
@@ -193,41 +190,29 @@
 
 (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point)
 (define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back)
-(define-key php-mode-map (kbd "<f5>") (lambda ()
-                                        (interactive)
-                                        (compile (concat "php " (buffer-file-name (current-buffer))))))
-(define-key php-mode-map (kbd "C-c v") (lambda ()
-                                         (interactive)
-                                         (let ((symbol (symbol-at-point)))
-                                           (if (not symbol)
-                                               (message "No symbol at point")
-                                             (end-of-line)
-                                             (newline-and-indent)
-                                             (insert (concat "var_dump(" (symbol-name symbol) ");"))))))
-(define-key php-mode-map (kbd "<f9>") (lambda ()
-                                        (interactive)
-                                        (let ((symbol (symbol-at-point)))
-                                          (if (not symbol)
-                                              (message "No symbol at point")
-                                            (browse-url (concat "https://php.net/manual-lookup.php?pattern=" (symbol-name symbol)))))))
+(define-key php-mode-map (kbd "C-c v") 'php-insert-var-dump-with-symbol)
+(define-key php-mode-map (kbd "<f5>") 'php-run-code)
+(define-key php-mode-map (kbd "<f9>") 'php-search-symbol-in-docs)
+(define-key php-mode-map (kbd "<f6>") 'ac-php-remake-tags)
+(define-key php-mode-map (kbd "C-<f6>") 'ac-php-remake-tags-all)
 
 (local-set-key "\t" 'php-doc-complete-function)
 
 (add-hook 'php-mode-hook 'flymake-php-load)
 (add-hook 'php-mode-hook (lambda ()
-                           (company-mode 1)
-                           (eldoc-mode 1)
+			   (company-mode 1)
+			   (eldoc-mode 1)
                            (yas-minor-mode 1)
                            (electric-indent-mode 1)
                            (add-to-list 'company-backends 'company-ac-php-backend)))
 
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
-;;(add-hook 'after-save-hook (lambda () (if (derived-mode-p 'php-mode) (ac-php-remake-tags))))
 
 ;;
 ;; load some libs
 ;;
 (load "~/.emacs.d/libs/elcord.el")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
