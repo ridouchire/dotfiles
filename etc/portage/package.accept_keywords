@@ -84,6 +84,8 @@ dev-ruby/actiontext ~amd64
 dev-ruby/actionview ~amd64
 dev-ruby/activejob ~amd64
 dev-ruby/activemodel ~amd64
-=app-editors/emacs-28.0.9999 **
+=app-editors/emacs-29.0.9999 **
 dev-lang/php ~amd64
 app-eselect/eselect-php ~amd64
+net-misc/nyx ~amd64
+net-libs/stem ~amd64

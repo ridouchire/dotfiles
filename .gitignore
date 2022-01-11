@@ -1,0 +1,2 @@
+home/user/.emacs.d/*
+!home/user/.emacs.d/libs/*
