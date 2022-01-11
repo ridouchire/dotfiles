@@ -110,7 +110,8 @@
 (scroll-bar-mode -1)
 (size-indication-mode -1)
 (column-number-mode t)
-(line-number-mode t)
+(global-linum-mode)
+(electric-pair-mode)
 
 ;;
 ;; web-mode
