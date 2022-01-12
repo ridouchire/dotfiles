@@ -43,7 +43,12 @@
 ;;
 ;; Key binding
 ;;
-(global-set-key "\M-x" (lambda () (interactive) (call-interactively (intern (ido-completing-read "M-x " (all-completions "" obarray 'commandp))))))
+(global-set-key "\M-x"
+		(lambda ()
+		  (interactive)
+		  (call-interactively
+		   (intern
+		    (ido-completing-read "M-x " (all-completions "" obarray 'commandp))))))
 (global-set-key (kbd "C-x C-d") (lambda () (interactive) (dired "~/Sources")))
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-c s") 'magit-status)
@@ -77,8 +82,13 @@
 	       ("Docker"      (or (mode . dockerfile-mode) (mode . docker-compose-mode)))
 	       ("Emacs"       (or (name . "^\\*scratch\\*$") (name . "^\\.emacs") (name . "^\\*Messages\\*$")))))))
 
-(add-hook 'ibuffer-mode-hook (lambda () (ibuffer-switch-to-saved-filter-groups "default")))
-(add-hook 'ibuffer-mode-hook (lambda () (setq ibuffer-formats '((mark modified read-only " " (name 18 200 :left :elide) " " filename-and-process)))))
+(add-hook 'ibuffer-mode-hook
+	  (lambda ()
+	    (ibuffer-switch-to-saved-filter-groups "default")))
+(add-hook 'ibuffer-mode-hook
+	  (lambda ()
+	    (setq ibuffer-formats
+		  '((mark modified read-only " " (name 18 200 :left :elide) " " filename-and-process)))))
 
 ;;
 ;; customization
@@ -95,7 +105,8 @@
 (setq auto-save-file-list nil)
 (setq word-wrap t)
 (setq indent-tab-mode nil)
-(setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "firefox-bin")
+(setq browse-url-browser-function
+      'browse-url-generic browse-url-generic-program "firefox-bin")
 (setq ido-virtual-buffers t)
 (setq scroll-step 1)
 (setq scroll-margin 10)
@@ -146,7 +157,7 @@
 (load "~/.emacs.d/libs/help-dwim.el")
 (load "~/.emacs.d/libs/tree-mode.el")
 (load "~/.emacs.d/libs/php-doc.el")
-(setq php-doc-directory "/usr/share/doc/php-docs-20101029-r1/en/php-chunked-xhtml")
+(setq php-doc-directory "/usr/share/doc/php-docs-20190203/en/php-chunked-xhtml")
 (require 'php-mode)
 (require 'ac-php)
 (require 'company-php)
@@ -200,12 +211,14 @@
 (local-set-key "\t" 'php-doc-complete-function)
 
 (add-hook 'php-mode-hook 'flymake-php-load)
-(add-hook 'php-mode-hook (lambda ()
-			   (company-mode 1)
-			   (eldoc-mode 1)
-                           (yas-minor-mode 1)
-                           (electric-indent-mode 1)
-                           (add-to-list 'company-backends 'company-ac-php-backend)))
+(add-hook 'php-mode-hook
+	  (lambda ()
+	    (company-mode t)
+	    (eldoc-mode 1)
+	    (ac-php-core-eldoc-setup)
+            (yas-global-mode 1)
+            (electric-indent-mode 1)
+            (add-to-list 'company-backends 'company-ac-php-backend)))
 
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 

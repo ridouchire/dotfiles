@@ -115,3 +115,4 @@ net-misc/asterisk mysql vorbis http speex odbc lua
 app-emacs/emacs-common gui
 media-libs/freetype harfbuzz
 sys-libs/libxcrypt system split-usr
+x11-libs/gdk-pixbuf jpeg tiff

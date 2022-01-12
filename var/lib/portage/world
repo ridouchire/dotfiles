@@ -50,8 +50,10 @@ media-gfx/feh
 media-gfx/fontforge
 media-gfx/geeqie
 media-gfx/gimp
+media-gfx/gthumb
 media-gfx/scrot
 media-libs/imlib
+media-libs/libjpeg-turbo
 media-libs/libogg
 media-libs/mesa
 media-libs/openal
@@ -100,6 +102,7 @@ x11-base/xorg-drivers
 x11-base/xorg-x11
 x11-drivers/xf86-video-intel
 x11-drivers/xf86-video-vesa
+x11-libs/gdk-pixbuf
 x11-libs/libdrm
 x11-misc/arandr
 x11-misc/dmenu
