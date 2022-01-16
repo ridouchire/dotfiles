@@ -15,6 +15,7 @@
     php-mode
     docker-compose-mode
     dockerfile-mode
+    vue-mode
     ac-php
     projectile
     magit
