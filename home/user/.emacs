@@ -16,6 +16,8 @@
     docker-compose-mode
     dockerfile-mode
     vue-mode
+    pug-mode
+    markdown-mode
     ac-php
     projectile
     magit
@@ -142,6 +144,7 @@
         ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
 
 (add-to-list 'auto-mode-alist '("\\.\\(html\\|twig\\)$'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
 
 ;;
 ;; projectile
@@ -222,6 +225,21 @@
             (add-to-list 'company-backends 'company-ac-php-backend)))
 
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+
+;;
+;; vue-mode
+;;
+(add-to-list 'auto-mode-alist '("\\.vue$" . vue-mode))
+
+;;
+;; pug-mode
+;;
+(add-to-list 'auto-mode-alist '("\\.pug$" . pug-mode))
+
+;;
+;; markdown-mode
+;;
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 
 ;;
 ;; load some libs
