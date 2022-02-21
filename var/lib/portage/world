@@ -63,6 +63,8 @@ media-video/ffmpeg
 media-video/mpv
 net-analyzer/nmap
 net-analyzer/openbsd-netcat
+net-analyzer/traceroute
+net-dns/bind-tools
 net-im/discord-bin
 net-im/telegram-desktop-bin
 net-libs/nodejs
@@ -75,6 +77,7 @@ net-vpn/openvpn
 net-vpn/tor
 net-wireless/iw
 net-wireless/wpa_supplicant
+sys-apps/baobab
 sys-apps/lm-sensors
 sys-apps/pciutils
 sys-apps/portage
