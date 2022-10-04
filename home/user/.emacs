@@ -104,6 +104,7 @@
 (setq use-dialog-box nil)
 (setq redisplay-dont-pause t)
 (setq make-backup-files nil)
+(setq create-lockfiles nil)
 (setq auto-save-default nil)
 (setq auto-save-file-list nil)
 (setq word-wrap t)
@@ -231,6 +232,7 @@
 ;; vue-mode
 ;;
 (add-to-list 'auto-mode-alist '("\\.vue$" . vue-mode))
+(setq js-indent-level 2)
 
 ;;
 ;; pug-mode
