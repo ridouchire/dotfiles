@@ -1,0 +1,1 @@
+x11-terms/rxvt-unicode -alt-font-width 256-color blink unicode3 fading-colors xft buffer-on-clear iso14755 pixbuf secondary-wheel wcwidth -vanilla -font-styles -perl
