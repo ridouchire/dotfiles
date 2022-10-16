@@ -1,5 +1,4 @@
 app-admin/pass
-app-admin/sudo
 app-admin/sysklogd
 app-arch/p7zip
 app-arch/unrar
@@ -11,11 +10,9 @@ app-doc/php-docs
 app-editors/emacs:29-vcs
 app-editors/nano
 app-emacs/emacs-daemon
-app-laptop/thinkfan
 app-misc/grc
 app-misc/mc
 app-misc/tmux
-app-office/dia
 app-portage/cpuid2cpuflags
 app-portage/eix
 app-portage/euses
@@ -36,7 +33,6 @@ dev-lang/go
 dev-lang/perl
 dev-lang/php
 dev-lang/python:2.7
-dev-lang/tk
 dev-libs/libpcre2
 dev-php/composer
 dev-php/symfony-console
@@ -66,21 +62,15 @@ net-analyzer/nmap
 net-analyzer/openbsd-netcat
 net-analyzer/traceroute
 net-dns/bind-tools
-net-im/discord-bin
 net-im/telegram-desktop-bin
 net-libs/nodejs
 net-misc/curl
 net-misc/dhcpcd
-net-misc/nyx
 net-misc/sntpd
 net-misc/sshpass
-net-misc/telnet-bsd
 net-misc/youtube-dl
 net-vpn/openvpn
-net-wireless/iw
-net-wireless/wpa_supplicant
 sys-apps/baobab
-sys-apps/lm-sensors
 sys-apps/pciutils
 sys-apps/portage
 sys-apps/yarn
@@ -102,7 +92,6 @@ sys-power/upower
 sys-process/htop
 sys-process/lsof
 www-client/firefox-bin
-www-servers/nginx
 x11-apps/setxkbmap
 x11-base/xorg-drivers
 x11-base/xorg-x11

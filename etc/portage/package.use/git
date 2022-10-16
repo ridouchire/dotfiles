@@ -1,1 +1,1 @@
-dev-vcs/git emacs
+dev-vcs/git emacs -tk
