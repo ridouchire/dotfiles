@@ -1,1 +1,1 @@
-media-libs/mesa lm_sensors -vaapi -opencl -d3d9 -xa gles1 -xvmc -vulkan -vdpau lm-sensors
+media-libs/mesa -vaapi -opencl -d3d9 -xa gles1 -xvmc -vulkan -vdpau
