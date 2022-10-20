@@ -87,14 +87,12 @@ sys-libs/ncurses
 sys-power/acpi
 sys-power/acpid
 sys-power/acpitool
-sys-power/pm-utils
 sys-power/upower
 sys-process/htop
 sys-process/lsof
 www-client/firefox-bin
 x11-apps/setxkbmap
 x11-base/xorg-drivers
-x11-base/xorg-x11
 x11-drivers/xf86-video-intel
 x11-drivers/xf86-video-vesa
 x11-libs/gdk-pixbuf
