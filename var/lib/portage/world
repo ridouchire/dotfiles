@@ -9,7 +9,6 @@ app-crypt/gnupg
 app-doc/php-docs
 app-editors/emacs:29-vcs
 app-editors/nano
-app-emacs/emacs-daemon
 app-misc/grc
 app-misc/mc
 app-misc/tmux
