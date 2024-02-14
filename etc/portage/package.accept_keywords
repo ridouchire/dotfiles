@@ -1,4 +1,4 @@
 net-im/telegram-desktop-bin
 media-libs/harfbuzz
 app-misc/grc ~amd64
-=app-editors/emacs-29.0.9999 **
+=app-editors/emacs-30.0.9999 **

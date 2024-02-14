@@ -1,2 +1,6 @@
 >=dev-lang/python-2.7.15:2.7 sqlite
 dev-lang/python sqlite
+
+*/* PYTHON_TARGETS: python3_11 -python3_10
+*/* PYTHON_SINGLE_TARGET: python3_11 -python_10
+dev-lang/python-exec PYTHON_TARGETS: -python3_10 python3_11

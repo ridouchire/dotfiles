@@ -1,1 +1,1 @@
-media-libs/mesa -vaapi -opencl -d3d9 -xa gles1 -xvmc -vulkan -vdpau
+media-libs/mesa -vaapi -opencl -d3d9 -xa gles1 -xvmc -vulkan -vdpau -wayland

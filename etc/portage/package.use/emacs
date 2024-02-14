@@ -1,1 +1,2 @@
-app-editors/emacs X -Xaw3d -png m17n-lib gtk2 -tiff toolkit-scroll-bar -jpeg -imagemagick -dbus git limxml2 libxml2 -toolkit-scroll-bars gtk xft -xpm -inotify -alsa -acl gpm gui lcms harfbuzz
+app-editors/emacs X -Xaw3d -png m17n-lib gtk2 -tiff toolkit-scroll-bar -jpeg -imagemagick -dbus git limxml2 libxml2 -toolkit-scroll-bars gtk xft xpm -inotify -alsa -acl gpm gui lcms harfbuzz -webp -svg -gif
+>=app-emacs/emacs-common-1.9 gui
