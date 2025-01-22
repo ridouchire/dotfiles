@@ -4,68 +4,52 @@
 
 (require 'package)
 
-(add-to-list 'package-archives '("melpa" . "https://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/packages") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (package-initialize)
 
 (defvar packagesList
-  '(auto-complete
-    web-mode
+  '(web-mode
     php-mode
     docker-compose-mode
     dockerfile-mode
     vue-mode
     pug-mode
     markdown-mode
-    ac-php
     projectile
     magit
-    company
-    company-php
-    flymake-php))
+    multiple-cursors
+    flymake-php
+    lsp-mode
+    lsp-ui
+    company))
 
 (mapc #'(lambda (package)
           (unless (package-installed-p package)
             (package-install package)))
       packagesList)
 
-(defun move-line-up ()
-    (interactive)
-    (transpose-lines 1)
-    (forward-line -2)
-    (indent-according-to-mode))
-
-(defun move-line-down ()
-  (interactive)
-  (forward-line 1)
-  (transpose-lines 1)
-  (forward-line -1)
-  (indent-according-to-mode))
+(require 'cl-lib)
+(require 'lsp)
+(require 'flymake)
 
 ;;
 ;; Key binding
 ;;
-(global-set-key "\M-x"
-		(lambda ()
-		  (interactive)
-		  (call-interactively
-		   (intern
-		    (ido-completing-read "M-x " (all-completions "" obarray 'commandp))))))
+(global-set-key "\M-x" (lambda () (interactive) (call-interactively (intern (ido-completing-read "M-x " (all-completions "" obarray 'commandp))))))
 (global-set-key (kbd "C-x C-d") (lambda () (interactive) (dired "~/Sources")))
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-c s") 'magit-status)
 (global-set-key (kbd "C-c b") 'magit-blame-popup)
 (global-set-key (kbd "C-c c") 'magit-branch-checkout)
-(global-set-key (kbd "C-c r") 'magit-reset-hard)
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 (global-set-key (kbd "C-c m") 'mc/mark-all-like-this-dwim)
 (global-set-key (kbd "C-c f") 'projectile-grep)
 (global-set-key (kbd "C-c k") 'projectile-kill-buffers)
 (global-set-key (kbd "C-f") 'isearch-forward)
 (global-set-key (kbd "C-'") 'goto-line)
-(global-set-key [(meta shift up)] 'move-line-up)
-(global-set-key [(meta shift down)] 'move-line-down)
+(global-set-key (kbd "C-]") 'find-tag)
+(global-set-key (kbd "C-t") 'pop-tag-mark)
 
 (define-key global-map [f1] 'delete-other-windows)
 (define-key global-map [f2] 'other-window)
@@ -83,7 +67,7 @@
 	       ("JavaScript"  (mode . javascript-mode))
 	       ("HTML"        (mode . web-mode))
 	       ("Docker"      (or (mode . dockerfile-mode) (mode . docker-compose-mode)))
-	       ("Emacs"       (or (name . "^\\*scratch\\*$") (name . "^\\.emacs") (name . "^\\*Messages\\*$")))))))
+	       ("System"       (or (name . "^\\*scratch\\*$") (name . "^\\.emacs") (name . "^\\*Messages\\*$")))))))
 
 (add-hook 'ibuffer-mode-hook
 	  (lambda ()
@@ -110,7 +94,7 @@
 (setq word-wrap t)
 (setq indent-tab-mode nil)
 (setq browse-url-browser-function
-      'browse-url-generic browse-url-generic-program "firefox-bin")
+      'browse-url-generic browse-url-generic-program "firefox")
 (setq ido-virtual-buffers t)
 (setq scroll-step 1)
 (setq scroll-margin 10)
@@ -125,8 +109,9 @@
 (scroll-bar-mode -1)
 (size-indication-mode -1)
 (column-number-mode t)
-(global-linum-mode)
-(electric-pair-mode)
+(global-display-line-numbers-mode t)
+(electric-pair-mode t)
+(cua-mode t)
 
 ;;
 ;; web-mode
@@ -159,14 +144,8 @@
 ;;
 ;; PHP
 ;;
-(load "~/.emacs.d/libs/windata.el")
-(load "~/.emacs.d/libs/help-dwim.el")
-(load "~/.emacs.d/libs/tree-mode.el")
-(load "~/.emacs.d/libs/php-doc.el")
 (setq php-doc-directory "/usr/share/doc/php-docs-20190203/en/php-chunked-xhtml")
 (require 'php-mode)
-(require 'ac-php)
-(require 'company-php)
 
 (defun php-ywb-lineup-arglist-intro (langelem)
   (save-excursion
@@ -197,34 +176,33 @@
       (newline-and-indent)
       (insert (concat "var_dump(" (symbol-name symbol) ");")))))
 
-(defun php-run-code ()
-  (interactive)
-  (compile (concat "php " (buffer-file-name (current-buffer)))))
+(defun flymake-php-init ()
+  (let* ((temp (flymake-init-create-temp-buffer-copy 'flymake-create-temp-inplace))
+	 (local (file-relative-name temp (file-name-directory buffer-file-name))))
+    (list "php" (list "-f" local "-l"))))
 
-(setq ac-sources '(ac-sources-php))
+(add-to-list 'flymake-err-line-patterns '("\\(Parse\\|Fatal\\) error: +\\(.*?\\) in \\(.*?\\) on line \\([0-9]+\\)$" 3 4 nil 2))
+(add-to-list 'flymake-allowed-file-name-masks '("\\.php$" flymake-php-init))
+
 (setq c-default-style "psr2")
+(setq flymake-phpcs-standart "PSR12")
+(setq flymake-phpcs-command "/root/.config/composer/vendor//squizlabs/php_codesniffer/bin/phpcs")
+(setq phpstan-executable "/root/.config/composer/vendor/phpstan/phpstan/phpstan.phar")
+(setq phpstan-level 5)
 
-(set (make-local-variable 'eldoc-documentation-function) 'php-doc-eldoc-function)
-
-(define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point)
-(define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back)
 (define-key php-mode-map (kbd "C-c v") 'php-insert-var-dump-with-symbol)
-(define-key php-mode-map (kbd "<f5>") 'php-run-code)
+(define-key php-mode-map (kbd "<f5>") 'php-mode)
+(define-key php-mode-map (kbd "<f6>") 'phpstan-analyze-project)
 (define-key php-mode-map (kbd "<f9>") 'php-search-symbol-in-docs)
-(define-key php-mode-map (kbd "<f6>") 'ac-php-remake-tags)
-(define-key php-mode-map (kbd "C-<f6>") 'ac-php-remake-tags-all)
+(define-key php-mode-map (kbd "M-p") 'flymake-goto-prev-error)
+(define-key php-mode-map (kbd "M-n") 'flymake-goto-next-error)
 
-(local-set-key "\t" 'php-doc-complete-function)
-
-(add-hook 'php-mode-hook 'flymake-php-load)
-(add-hook 'php-mode-hook
-	  (lambda ()
-	    (company-mode t)
-	    (eldoc-mode 1)
-	    (ac-php-core-eldoc-setup)
-            (yas-global-mode 1)
-            (electric-indent-mode 1)
-            (add-to-list 'company-backends 'company-ac-php-backend)))
+(add-hook 'php-mode-hook (lambda ()
+			   (electric-indent-mode t)
+                           (lsp t)
+                           (flymake-mode t)
+                           (flymake-phpstan-turn-on)
+                           (flymake-phpcs-load)))
 
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 
@@ -242,12 +220,24 @@
 ;;
 ;; markdown-mode
 ;;
+(add-hook 'markdown-mode-hook (lambda ()
+                                (lsp t)))
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 
 ;;
-;; load some libs
+;; typescript
 ;;
-(load "~/.emacs.d/libs/elcord.el")
+(add-hook 'typescript-mode-hook (lambda ()
+                                  (lsp t)))
+(add-to-list 'auto-mode-alist '("\\.ts$" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
+
+;;
+;; bash
+;;
+(add-hook 'sh-mode-hook (lambda ()
+                          (lsp t)))
+(add-to-list 'auto-mode-alist '("\\.sh$" . sh-mode))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -255,11 +245,28 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(tango-dark))
+ '(flymake-phpstan-disable-c-mode-hooks nil)
+ '(ignored-local-variable-values
+   '((phpstan-memory-limit . "256M")
+     (php-project-root . auto)))
+ '(indent-tabs-mode nil)
+ '(lsp-php-composer-dir
+   "Do not run Composer as root/super user! See https://getcomposer.org/root for details\12/usr/bin/composer")
+ '(lsp-ui-doc-show-with-cursor t)
+ '(mpc-host "192.168.88.168")
  '(package-selected-packages
-   '(dockerfile-mode docker-compose-mode web-mode projectile magit company-php ac-php)))
+   '(flymake-phpcs yasnippet xcscope web-mode vue-mode typescript-mode pug-mode projectile popup pkg-info multiple-cursors magit lsp-ui flymake-phpstan flymake-php dockerfile-mode docker-compose-mode composer company))
+ '(php-complete-function-modules
+   '(bcmath bzip2 core curl exif fpm gd gettext gmp gnupg iconv intl language libxml mbstring memcache mongodb openssl pcntl pgsql posix rar simplexml soap socket sodium solr xml xmlwriter yaml zlib))
+ '(php-manual-url 'ru)
+ '(php-mode-coding-style 'psr2)
+ '(phpstan-baseline-file "phpstan.phar")
+ '(safe-local-variable-values '((phpstan-working-dir (root . "src"))))
+ '(standard-indent 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'dired-find-alternate-file 'disabled nil)
