@@ -48,7 +48,6 @@ media-sound/apulse
 media-video/ffmpeg
 net-analyzer/nmap
 net-fs/sshfs
-net-im/telegram-desktop-bin
 net-libs/nodejs
 net-misc/curl
 net-misc/dhcpcd
