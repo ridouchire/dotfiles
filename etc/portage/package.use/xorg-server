@@ -1,1 +1,3 @@
-x11-base/xorg-server -elogind
+x11-base/xorg-server -elogind xvfb
+media-libs/mesa llvm
+net-analyzer/nmap libssh2

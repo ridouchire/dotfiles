@@ -1,1 +1,1 @@
-www-client/firefox system-harfbuzz system-libvpx system-sqlite system-jpeg -wifi -hwaccel system-icu system-libevent -geckodriver l10n_ru bindist eme-free -webdriver -gmp-autoupdate -screenshot lto system-png
+www-client/firefox system-harfbuzz system-libvpx system-sqlite system-jpeg -wifi -hwaccel system-icu system-libevent -geckodriver l10n_ru bindist eme-free -webdriver -gmp-autoupdate -screenshot lto system-png -telemetry -pgo clang jumbo-build

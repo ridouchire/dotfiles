@@ -1,2 +1,2 @@
-dev-lang/php intl sockets xmlwriter -threads mysql -sodium -tidy -xslt -xmlrpc -calendar xmlreader pcntl inifile curl -zip pdo -ftp -zip-encryption cgi mhash gmp mysqli -soap -webp -exif -phpdbg sqlite -ipv6 -opcache -berkdb phar -gdbm
+dev-lang/php intl sockets xmlwriter -threads mysql -sodium -tidy -xslt -xmlrpc -calendar xmlreader pcntl inifile curl -zip pdo -ftp -zip-encryption cgi mhash gmp mysqli -soap -webp -exif -phpdbg sqlite -ipv6 -opcache -berkdb phar -gdbm -gd
 dev-db/mysql -latin1 perl server

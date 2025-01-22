@@ -1,4 +1,9 @@
 net-im/telegram-desktop-bin
 media-libs/harfbuzz
 app-misc/grc ~amd64
-=app-editors/emacs-30.0.9999 **
+dev-lang/php ~amd64
+app-containers/docker
+app-containers/docker-cli
+app-containers/containerd
+app-containers/runc
+app-containers/docker-compose
