@@ -19,6 +19,7 @@
 (setq scroll-conservatively 10000)
 (setq query-replace-highlight t)
 (setq gc-cons-threshold 100000000)
+(setq-default indent-tabs-mode nil)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -29,9 +30,6 @@
 (global-display-line-numbers-mode t)
 (electric-pair-mode t)
 (cua-mode t)
-
-(global-set-key "\M-x" (lambda () (interactive) (call-interactively (intern (ido-completing-read "M-x " (all-completions "" obarray 'commandp))))))
-(global-set-key (kbd "C-x C-d") (lambda () (interactive) (dired "~/Sources")))
 
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 (global-set-key (kbd "C-f") 'isearch-forward)
@@ -47,73 +45,59 @@
 (use-package package
   :config
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-  (package-initialize)
-  (defvar packageList nil)
-  (add-to-list 'packageList 'web-mode)
-  (add-to-list 'packageList 'php-mode)
-  (add-to-list 'packageList 'dockerfile-mode)
-  (add-to-list 'packageList 'docker-compose-mode)
-  (add-to-list 'packageList 'vue-mode)
-  (add-to-list 'packageList 'pug-mode)
-  (add-to-list 'packageList 'markdown-mode)
-  (add-to-list 'packageList 'projectile)
-  (add-to-list 'packageList 'magit)
-  (add-to-list 'packageList 'multiple-cursors)
-  (add-to-list 'packageList 'flymake-php)
-  (add-to-list 'packageList 'lsp-mode)
-  (add-to-list 'packageList 'lsp-ui)
-  (add-to-list 'packageList 'company)
-  (add-to-list 'packageList 'yasnippet)
-  (add-to-list 'packageList 'yasnippet-snippets)
-  (add-to-list 'packageList 'flymake-phpcs)
-  (add-to-list 'packageList 'flymake-phpstan)
-  (add-to-list 'packageList 'typescript-mode)
+  (package-initialize))
 
-  (mapc #'(lambda (package)
-            (unless (package-installed-p package)
-              (package-install package)))
-        packageList))
+(use-package dired
+  :ensure nil
+  :bind (:map global-map ("C-x C-d" . (lambda () (interactive) (dired "~/Sources")))))
+
+(use-package ido
+  :ensure nil
+  :bind (:map global-map ("\M-x" . (lambda () (interactive) (call-interactively (intern (ido-completion-read "M-x " (all-completions "" obarray 'commandp))))))))
 
 (use-package ibuffer
+  :ensure nil
+  :bind (:map global-map ("C-x C-b" . ibuffer))
+  :hook ((ibuffer-mode . (lambda () (ibuffer-switch-to-saved-filter-groups "default"))))
   :config
-  (global-set-key (kbd "C-x C-b") 'ibuffer)
   (setq ibuffer-saved-filter-groups
         (quote (("default"
-	         ("dired"       (mode . dired-mode))
-	         ("PHP"         (mode . php-mode))
-	         ("JavaScript"  (mode . javascript-mode))
-	         ("HTML"        (mode . web-mode))
-	         ("Docker"      (or (mode . dockerfile-mode) (mode . docker-compose-mode)))
-	         ("System"       (or (name . "^\\*scratch\\*$") (name . "^\\.emacs") (name . "^\\*Messages\\*$")))))))
-
-  (add-hook 'ibuffer-mode-hook (lambda () (ibuffer-switch-to-saved-filter-groups "default")))
-  (add-hook 'ibuffer-mode-hook (lambda () (setq ibuffer-formats '((mark modified read-only " " (name 18 200 :left :elide) " " filename-and-process))))))
+                 ("dired"      (mode . dired-mode))
+                 ("PHP"        (mode . php-mode))
+                 ("Javascript" (mode . javascript-mode))
+                 ("HTML"       (mode . web-mode))
+                 ("Docker"     (or (mode . dockerfile-mode) (mode . docker-compose-mode)))
+                 ("system"     (or (name . "^\\*scratch\\*$") (name . "^\\.emacs") (name . "^\\*Messages\\*$"))))))))
 
 (use-package yasnippet
-  :config
-  (make-directory "~/.emacs.d/snippets" t)
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-  (global-set-key (kbd "C-c e") 'yas-expand))
+  :ensure t
+  :init (make-directory "~/.emacs.d/snippets" t)
+  :config (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  :bind (:map global-map ("C-c e" . yas-expand)))
+
+(use-package yasnippet-snippets :ensure t)
 
 (use-package magit
-  :config
-  (global-set-key (kbd "C-c b") 'magit-blame-popup)
-  (global-set-key (kbd "C-c c") 'magit-branch-checkout)
-  (define-key global-map [f12] 'magit-status))
+  :ensure t
+  :bind (:map global-map (("C-c b" . magit-blame-poput)
+                          ("C-c c" . magit-branch-checkout)
+                          ("<f12>" . magit-status))))
 
 (use-package multiple-cursors
-  :config
-  (global-set-key (kbd "C-c m") 'mc/mark-all-like-this))
+  :ensure t
+  :bind (:map global-map ("C-c m" . mc/mark-all-like-this)))
 
 (use-package projectile
+  :ensure t
+  :bind (:map global-map (("C-c f" . projectile-grep)
+                          ("C-c k" . projectile-kill-buffers)))
   :config
-  (global-set-key (kbd "C-c f") 'projectile-grep)
-  (global-set-key (kbd "C-c k") 'projectile-kill-buffers)
   (setq projectile-indexing-method 'native)
   (setq projectile-enable-caching t)
   (projectile-global-mode))
 
 (use-package web-mode
+  :ensure t
   :config
   (setq web-mode-enable-auto-pairing t)
   (setq web-mode-enable-block-face t)
@@ -127,43 +111,14 @@
   (setq web-mode-ac-sources-alist
         '(("css" . (ac-source-css-property))
           ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
-
-  (add-to-list 'auto-mode-alist '("\\.\\(html\\|twig\\)$'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.js$" . web-mode)))
+  :mode "\\.\\(html\\|twig\\|blade\\)$'"
+  :mode "\\.js$")
 
 (use-package php-mode
+  :ensure t
   :config
   (setq php-doc-directory "/usr/share/doc/php-docs-20190203/en/php-chunked-xhtml")
   (setq c-default-style "psr2")
-  
-  (use-package flymake-php
-    :config
-    
-    (defun flymake-php-init ()
-      (let* ((temp (flymake-init-create-temp-buffer-copy 'flymake-create-temp-inplace))
-	     (local (file-relative-name temp (file-name-directory buffer-file-name))))
-        (list "php" (list "-f" local "-l"))))
-    
-    (add-to-list 'flymake-err-line-patterns '("\\(Parse\\|Fatal\\) error: +\\(.*?\\) in \\(.*?\\) on line \\([0-9]+\\)$" 3 4 nil 2))
-    (add-to-list 'flymake-allowed-file-name-masks '("\\.php$" flymake-php-init))
-
-    (define-key php-mode-map (kbd "M-p") 'flymake-goto-prev-error)
-    (define-key php-mode-map (kbd "M-n") 'flymake-goto-next-error)
-    (add-hook 'php-mode-hook (lambda () (flymake-mode t))))
-
-  (use-package flymake-phpcs
-    :config
-    (setq flymake-phpcs-standart "PSR12")
-    (setq flymake-phpcs-command "/root/.config/composer/vendor//squizlabs/php_codesniffer/bin/phpcs")
-    (add-hook 'php-mode-hook (lambda () (flymake-phpcs-load))))
-
-  (use-package flymake-phpstan
-    :config
-    (setq phpstan-executable "/root/.config/composer/vendor/phpstan/phpstan/phpstan.phar")
-    (setq phpstan-level 5)
-    
-    (define-key php-mode-map (kbd "<f6>") 'phpstan-analyze-project)
-    (add-hook 'php-mode-hook (lambda () (flymake-phpstan-turn-on))))
 
   (defun php-ywb-lineup-arglist-intro (langelem)
     (save-excursion
@@ -178,35 +133,84 @@
   (c-set-offset 'arglist-intro 'php-ywb-lineup-arglist-intro)
   (c-set-offset 'arglist-close 'php-ywb-lineup-arglist-close)
 
-  (define-key php-mode-map (kbd "<f5>") 'php-mode)
-  (define-key php-mode-map (kbd "<f9>") 'php-search-documentation)
+  :bind (:map php-mode-map
+              ("<f5>" . php-mode)
+              ("<f9>" . php-search-documentation))
 
-  (add-hook 'php-mode-hook (lambda () (electric-indent-mode t) (lsp t) (yas-minor-mode t)))
+  :mode "\\.php$"
+  :mode "\\.blade\\.php$"
+  :delight
+  :hook (php-mode . (lambda ()
+                      (electric-indent-mode t)
+                      (lsp t)
+                      (yas-minor-mode t))))
 
-  (add-to-list 'auto-mode-alist '("\\.php$" . php-mode)))
+(use-package flymake-php
+  :ensure t
+  :requires php-mode
+  :config
+  (defun flymake-php-init ()
+    (let* ((temp (flymake-init-create-temp-buffer-copy 'flymake-create-temp-inplace))
+           (local (file-relative-name temp (file-name-directory buffer-file-name))))
+      (list "php" (list "-f" local "-l"))))
+
+  (add-to-list 'flymake-err-line-patterns '("\\(Parse\\|Fatal\\) error: +\\(.*?\\) in \\(.*?\\) on line \\([0-9]+\\)$" 3 4 nil 2))
+  (add-to-list 'flymake-allowed-file-name-masks '("\\.php$" flymake-php-init))
+  :bind (:map php-mode-map
+              ("M-p" . flymake-goto-prev-error)
+              ("M-n" . flymake-goto-next-error))
+  :hook (php-mode . (lambda () (flymake-mode t))))
+
+(use-package flymake-phpcs
+  :ensure t
+  :requires php-mode
+  :config
+  (setq flymake-phpcs-standart "PSR12")
+  (setq flymake-phpcs-command "/root/.config/composer/vendor//squizlabs/php_codesniffer/bin/phpcs")
+  :hook (php-mode . (lambda () (flymake-phpcs-load))))
+
+(use-package flymake-phpstan
+  :ensure t
+  :requires php-mode
+  :config
+  (setq phpstan-executable "/root/.config/composer/vendor/phpstan/phpstan/phpstan.phar")
+  (setq phpstan-level 5)
+  :bind (:map php-mode-map ("<f6>" . phpstan-analyze-project))
+  :hook (php-mode . (lambda () (flymake-phpstan-turn-on))))
 
 (use-package vue-mode
+  :ensure t
   :config
-  (add-to-list 'auto-mode-alist '("\\.vue$" . vue-mode))
-  (setq js-indent-level 2))
+  (setq js-indent-level 2)
+  :mode "\\.vue$")
 
 (use-package pug-mode
+  :ensure t
   :config
-  (add-to-list 'auto-mode-alist '("\\.pug$" . pug-mode)))
+  :mode "\\.pug$")
 
 (use-package markdown-mode
+  :ensure t
   :config
-  (add-hook 'markdown-mode-hook (lambda () (lsp t)))
-  (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode)))
+  :hook (markdown-mode . (lambda () (lsp t)))
+  :mode "\\.md$")
 
 (use-package typescript-mode
+  :ensure t
   :config
-  (add-hook 'typescript-mode-hook (lambda () (lsp t)))
-  (add-to-list 'auto-mode-alist '("\\.ts$" . typescript-mode))
-  (add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode)))
+  :hook (typescript-mode . (lambda () (lsp t)))
+  :mode "\\.ts$"
+  :mode "\\.tsx$")
 
-(add-hook 'sh-mode-hook (lambda () (lsp t)))
-(add-to-list 'auto-mode-alist '("\\.sh$" . sh-mode))
+(use-package shell
+  :ensure nil
+  :hook (sh-mode . (lambda () (lsp t)))
+  :mode "\\.sh$")
+
+(use-package yaml-mode
+  :ensure t
+  :mode "\\.yml"
+  :mode "\\.yaml")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -219,9 +223,6 @@
  '(custom-enabled-themes '(tango-dark))
  '(flymake-phpstan-disable-c-mode-hooks nil)
  '(frame-title-format "Emacs %b" t)
- '(ignored-local-variable-values
-   '((phpstan-memory-limit . "256M")
-     (php-project-root . auto)))
  '(lsp-ui-doc-show-with-cursor t)
  '(menu-bar-mode nil)
  '(package-selected-packages
@@ -231,10 +232,7 @@
  '(php-manual-url 'ru)
  '(php-mode-coding-style 'psr2)
  '(phpstan-baseline-file "phpstan.phar")
- '(safe-local-variable-values
-   '((projectile-project-name "MedilineERP")
-     (phpstan-working-dir
-      (root . "src"))))
+ '(safe-local-variable-values '((phpstan-working-dir (root . "src"))))
  '(scroll-bar-mode nil)
  '(standard-indent 2))
 (custom-set-faces
@@ -247,9 +245,11 @@
 
 
 (add-hook 'emacs-startup-hook
-	  (lambda ()
-	    (message "Emacs ready in %s with %d garbage collections."
-		     (format "%.2f seconds"
-			     (float-time
-			      (time-subtract after-init-time before-init-time)))
-		     gcs-done)))
+          (lambda ()
+            (message "Emacs ready in %s with %d garbage collections."
+                     (format "%.2f seconds"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done)))
+
+(load-file "~/.emacs.d/llama.el")
