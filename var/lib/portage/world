@@ -45,6 +45,7 @@ media-libs/mesa
 media-libs/openal
 media-sound/alsa-utils
 media-sound/apulse
+media-sound/id3tool
 media-video/ffmpeg
 net-analyzer/nmap
 net-fs/sshfs
@@ -52,6 +53,7 @@ net-libs/nodejs
 net-misc/curl
 net-misc/dhcpcd
 net-misc/sshpass
+net-vpn/openvpn
 sys-apps/portage
 sys-boot/lilo
 sys-devel/gcc
@@ -60,6 +62,7 @@ sys-kernel/gentoo-kernel-bin
 sys-kernel/installkernel
 sys-libs/glibc
 sys-libs/ncurses
+sys-process/cronie
 sys-process/htop
 www-client/firefox
 x11-apps/setxkbmap
