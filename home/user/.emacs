@@ -5,7 +5,6 @@
 (setq inhibit-startup-screen -1
       initial-scratch-message nil)
 (setq use-dialog-box nil)
-(setq redisplay-dont-pause t)
 (setq make-backup-files nil)
 (setq create-lockfiles nil)
 (setq auto-save-default nil)
@@ -20,6 +19,8 @@
 (setq query-replace-highlight t)
 (setq gc-cons-threshold 100000000)
 (setq-default indent-tabs-mode nil)
+(setq user-mail-address nil)
+(setq byte-compile-warnings '(cl-function))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -69,6 +70,11 @@
                  ("Docker"     (or (mode . dockerfile-mode) (mode . docker-compose-mode)))
                  ("system"     (or (name . "^\\*scratch\\*$") (name . "^\\.emacs") (name . "^\\*Messages\\*$"))))))))
 
+(use-package achievements
+  :ensure t
+  :config
+  (achievements-mode))
+
 (use-package yasnippet
   :ensure t
   :init (make-directory "~/.emacs.d/snippets" t)
@@ -93,8 +99,7 @@
                           ("C-c k" . projectile-kill-buffers)))
   :config
   (setq projectile-indexing-method 'native)
-  (setq projectile-enable-caching t)
-  (projectile-global-mode))
+  (setq projectile-enable-caching t))
 
 (use-package web-mode
   :ensure t
@@ -116,6 +121,18 @@
 
 (use-package php-mode
   :ensure t
+  :bind (:map php-mode-map
+              ("<f5>" . php-mode)
+              ("<f9>" . php-search-documentation))
+
+  :mode "\\.php$"
+  :mode "\\.blade\\.php$"
+  :delight
+  :hook (php-mode . (lambda ()
+                      (electric-indent-mode t)
+                      (lsp t)
+                      (yas-minor-mode t)
+                      (projectile-mode)))
   :config
   (setq php-doc-directory "/usr/share/doc/php-docs-20190203/en/php-chunked-xhtml")
   (setq c-default-style "psr2")
@@ -132,51 +149,32 @@
 
   (c-set-offset 'arglist-intro 'php-ywb-lineup-arglist-intro)
   (c-set-offset 'arglist-close 'php-ywb-lineup-arglist-close)
+  
+  (use-package flymake-phpstan
+    :ensure t
+    :requires php-mode
+    :config
+    (setq phpstan-executable "/root/.config/composer/vendor/phpstan/phpstan/phpstan.phar")
+    (setq phpstan-level 5)
+    :bind (:map php-mode-map ("<f6>" . phpstan-analyze-project))
+    :hook (php-mode . (lambda () (flymake-phpstan-turn-on))))
+  
+  (use-package flymake-php
+    :ensure t
+    :requires php-mode
+    :config
+    (defun flymake-php-init ()
+      (let* ((temp (flymake-init-create-temp-buffer-copy 'flymake-create-temp-inplace))
+             (local (file-relative-name temp (file-name-directory buffer-file-name))))
+        (list "php" (list "-f" local "-l"))))
 
-  :bind (:map php-mode-map
-              ("<f5>" . php-mode)
-              ("<f9>" . php-search-documentation))
-
-  :mode "\\.php$"
-  :mode "\\.blade\\.php$"
-  :delight
-  :hook (php-mode . (lambda ()
-                      (electric-indent-mode t)
-                      (lsp t)
-                      (yas-minor-mode t))))
-
-(use-package flymake-php
-  :ensure t
-  :requires php-mode
-  :config
-  (defun flymake-php-init ()
-    (let* ((temp (flymake-init-create-temp-buffer-copy 'flymake-create-temp-inplace))
-           (local (file-relative-name temp (file-name-directory buffer-file-name))))
-      (list "php" (list "-f" local "-l"))))
-
-  (add-to-list 'flymake-err-line-patterns '("\\(Parse\\|Fatal\\) error: +\\(.*?\\) in \\(.*?\\) on line \\([0-9]+\\)$" 3 4 nil 2))
-  (add-to-list 'flymake-allowed-file-name-masks '("\\.php$" flymake-php-init))
-  :bind (:map php-mode-map
-              ("M-p" . flymake-goto-prev-error)
-              ("M-n" . flymake-goto-next-error))
-  :hook (php-mode . (lambda () (flymake-mode t))))
-
-(use-package flymake-phpcs
-  :ensure t
-  :requires php-mode
-  :config
-  (setq flymake-phpcs-standart "PSR12")
-  (setq flymake-phpcs-command "/root/.config/composer/vendor//squizlabs/php_codesniffer/bin/phpcs")
-  :hook (php-mode . (lambda () (flymake-phpcs-load))))
-
-(use-package flymake-phpstan
-  :ensure t
-  :requires php-mode
-  :config
-  (setq phpstan-executable "/root/.config/composer/vendor/phpstan/phpstan/phpstan.phar")
-  (setq phpstan-level 5)
-  :bind (:map php-mode-map ("<f6>" . phpstan-analyze-project))
-  :hook (php-mode . (lambda () (flymake-phpstan-turn-on))))
+    (add-to-list 'flymake-err-line-patterns '("\\(Parse\\|Fatal\\) error: +\\(.*?\\) in \\(.*?\\) on line \\([0-9]+\\)$" 3 4 nil 2))
+    (add-to-list 'flymake-allowed-file-name-masks '("\\.php$" flymake-php-init))
+    :bind (:map php-mode-map
+                ("M-p" . flymake-goto-prev-error)
+                ("M-n" . flymake-goto-next-error))
+    :hook (php-mode . (lambda () (flymake-mode t))))
+  )
 
 (use-package vue-mode
   :ensure t
@@ -212,6 +210,35 @@
   :mode "\\.yml"
   :mode "\\.yaml")
 
+(use-package emacs-lisp-mode
+  :ensure nil
+  :mode "\\.el")
+
+(use-package company
+  :ensure t
+  :hook (emacs-lisp-mode . company-mode))
+
+(use-package lsp-mode
+  :ensure t
+  :bind (([remap xref-find-definitions] . #'lsp-ui-peek-find-definitions)
+         ([remap xref-find-references] . #'lsp-ui-peek-find-references))
+  :config
+  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols)))
+
+(use-package nyan-mode
+  :ensure t
+  :config
+  (nyan-mode))
+
+(use-package all-the-icons-dired
+  :ensure t
+  :hook (dired-mode . all-the-icons-dired-mode)
+  :init (setq all-the-icons-dired-monochrome nil))
+
+(use-package all-the-icons-ibuffer
+  :ensure t
+  :hook (ibuffer-mode . all-the-icons-ibuffer-mode))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -226,13 +253,22 @@
  '(lsp-ui-doc-show-with-cursor t)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(yasnippet-snippets flymake-phpcs yasnippet xcscope web-mode vue-mode typescript-mode pug-mode projectile popup pkg-info multiple-cursors magit lsp-ui flymake-phpstan flymake-php dockerfile-mode docker-compose-mode composer company))
+   '(achievements company-nginx company-web composer docker-compose-mode
+                  dockerfile-mode flymake-php flymake-phpcs
+                  flymake-phpstan lsp-ui magit multiple-cursors
+                  php-flymake pkg-info popup projectile pug-mode
+                  typescript-mode vue-mode web-mode xcscope yasnippet
+                  yasnippet-snippets))
  '(php-complete-function-modules
-   '(bcmath bzip2 core curl exif fpm gd gettext gmp gnupg iconv intl language libxml mbstring memcache mongodb openssl pcntl pgsql posix rar simplexml soap socket sodium solr xml xmlwriter yaml zlib))
+   '(bcmath bzip2 core curl exif fpm gd gettext gmp gnupg iconv intl
+            language libxml mbstring memcache mongodb openssl pcntl
+            pgsql posix rar simplexml soap socket sodium solr xml
+            xmlwriter yaml zlib))
  '(php-manual-url 'ru)
  '(php-mode-coding-style 'psr2)
  '(phpstan-baseline-file "phpstan.phar")
- '(safe-local-variable-values '((phpstan-working-dir (root . "src"))))
+ '(safe-local-variable-values
+   '((phpstan-memory-limit . "256M") (phpstan-working-dir (root . "src"))))
  '(scroll-bar-mode nil)
  '(standard-indent 2))
 (custom-set-faces
@@ -242,7 +278,6 @@
  ;; If there is more than one, they won't work right.
  )
 (put 'dired-find-alternate-file 'disabled nil)
-
 
 (add-hook 'emacs-startup-hook
           (lambda ()
